@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<Pane prefHeight="253.0" prefWidth="300.0" stylesheets="@../../stylesheets/brandStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.java.fase2final_manejo.controllers.edits.editBrandController">
+    <children>
+        <Pane layoutX="15.0" layoutY="15.0" prefHeight="226.0" prefWidth="270.0" styleClass="mainPane">
+            <children>
+                <Button fx:id="btnCerrar" layoutX="230.0" layoutY="15.0" mnemonicParsing="false" onAction="#cerrar" prefHeight="24.0" prefWidth="22.0" styleClass="btnSalir">
+                    <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../images/x.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Label layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="190.0" styleClass="txtTitulo" text="Editar marca existente" textAlignment="JUSTIFY" />
+                <VBox layoutY="42.0" prefHeight="0.0" prefWidth="271.0">
+                    <children>
+                        <Line endX="-150.0" layoutY="10.0" startX="100.0" stroke="#f2f2f2">
+                            <VBox.margin>
+                                <Insets left="10.0" />
+                            </VBox.margin>
+                        </Line>
+                    </children>
+                </VBox>
+                <VBox layoutX="11.0" layoutY="48.0" prefHeight="106.0" prefWidth="251.0">
+                    <children>
+                        <Region prefHeight="8.0" prefWidth="251.0" />
+                        <Label styleClass="txtNormal" text="Nombre de la marca" />
+                        <TextField fx:id="txtMarca" promptText="Nombre" />
+                        <Region prefHeight="10.0" prefWidth="251.0" />
+                        <Label styleClass="txtNormal" text="Fecha de creación" />
+                        <DatePicker fx:id="dpFecha" prefHeight="25.0" prefWidth="250.0" promptText="Seleccionar fecha" />
+                        <Region prefHeight="10.0" prefWidth="251.0" />
+                        <Label styleClass="txtNormal" text="Nombre del fundador" />
+                        <TextField fx:id="txtFundador" promptText="Fundador" />
+                    </children>
+                </VBox>
+                <Button fx:id="btnAñadir" layoutX="105.0" layoutY="185.0" mnemonicParsing="false" onAction="#editarMarca" styleClass="btnNuevo" text="Editar">
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </Pane>
+    </children>
+</Pane>

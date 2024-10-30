@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<Pane prefHeight="550.0" prefWidth="750.0" styleClass="main" stylesheets="@../stylesheets/vehicleStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.java.fase2final_manejo.controllers.vehicleController">
+   <children>
+      <Pane layoutX="15.0" layoutY="15.0" prefHeight="520.0" prefWidth="720.0" styleClass="mainPane">
+         <children>
+            <VBox prefHeight="520.0" prefWidth="720.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="33.0" prefWidth="720.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtTitulo" text="Vehículos" />
+                        <Region prefHeight="33.0" prefWidth="357.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#abrirVentanaNuevoVehiculo" prefHeight="30.0" prefWidth="210.0" styleClass="btnNuevo" text="Añadir un nuevo vehículo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="21.0" prefWidth="690.0">
+                     <children>
+                        <TextField fx:id="txtBuscarNombre" prefHeight="36.0" prefWidth="286.0" promptText="Buscar por nombre" styleClass="txtBuscar" />
+                        <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#buscarVehiculo" prefHeight="30.0" styleClass="btnBuscar" text="Buscar">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/lupa.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="5.0" prefWidth="690.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="690.0" spacing="30.0" styleClass="hBColumna">
+                     <children>
+                        <Label styleClass="txtTituloColumna" text="Marca" />
+                        <Label styleClass="txtTituloColumna" text="Tipo" />
+                        <Label styleClass="txtTituloColumna" text="Linea" />
+                        <Label styleClass="txtTituloColumna" text="Modelo" />
+                        <Label styleClass="txtTituloColumna" text="Color" />
+                        <Label styleClass="txtTituloColumna" text="Placa" />
+                        <Label styleClass="txtTituloColumna" text="Chasis" />
+                        <Label styleClass="txtTituloColumna" text="Motor" />
+                        <Label styleClass="txtTituloColumna" text="VIN" />
+                        <Label styleClass="txtTituloColumna" text="Acciones" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="lvVehiculo" prefHeight="376.0" prefWidth="690.0" />
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </Pane>
+   </children>
+</Pane>

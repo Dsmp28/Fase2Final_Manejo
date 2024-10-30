@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="550.0" prefWidth="750.0" styleClass="main" stylesheets="@../stylesheets/typeStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.java.fase2final_manejo.controllers.typeController">
+   <children>
+      <Pane layoutX="15.0" layoutY="15.0" prefHeight="520.0" prefWidth="720.0" styleClass="mainPane">
+         <children>
+            <VBox prefHeight="520.0" prefWidth="720.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="33.0" prefWidth="720.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="txtTitulo" text="Tipos de vehículo" />
+                        <Region prefHeight="33.0" prefWidth="357.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnNuevo" mnemonicParsing="false" onAction="#abrirVentanaNuevoTipo" prefHeight="30.0" prefWidth="291.0" styleClass="btnNuevo" text="Añadir un nuevo tipo de vehículo">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="21.0" prefWidth="690.0">
+                     <children>
+                        <TextField fx:id="txtBuscarNombre" prefHeight="36.0" prefWidth="286.0" promptText="Buscar por nombre" styleClass="txtBuscar" />
+                        <Button fx:id="btnBuscar" mnemonicParsing="false" onAction="#buscarTipo" prefHeight="30.0" styleClass="btnBuscar" text="Buscar">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/lupa.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="5.0" prefWidth="690.0" />
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="690.0" spacing="200.0" styleClass="hBColumna">
+                     <children>
+                        <Label styleClass="txtTituloColumna" text="Nombre" />
+                        <Label styleClass="txtTituloColumna" text="Año" />
+                        <Label styleClass="txtTituloColumna" text="Acciones" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="lvTipo" prefHeight="376.0" prefWidth="690.0" />
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </Pane>
+   </children>
+</Pane>

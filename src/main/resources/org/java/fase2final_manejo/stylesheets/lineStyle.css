@@ -1,0 +1,116 @@
+.main{
+    -fx-background-color: #f2f2f2;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+.mainPane{
+    -fx-background-color: white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.txtTitulo{
+    -fx-fill: #8cc1a1;
+    -fx-text-fill: #8cc1a1;
+    -fx-font-size: 16px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 800;
+
+}
+.btnNuevo{
+    -fx-background-color: #8cc1a1;
+    -fx-border-width: 1px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 700;
+}
+.txtBuscar{
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+}
+.btnBuscar{
+    -fx-background-color: #8cc1a1;
+    -fx-border-width: 1px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 700;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 0px;
+}
+.table-view{
+    -fx-background-color: white;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.table-cell{
+    -fx-alignment: center;
+}
+.txtNormal{
+    -fx-text-fill: #1e1f26;
+    -fx-font-size: 12px;
+    -fx-font-family: "Roboto";
+}
+.btnSalir{
+    -fx-background-color: transparent;
+    -fx-border-width: 0px;
+}
+.txtTituloColumna{
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 800;
+}
+.hBColumna{
+    -fx-background-color: #8cc1a1;
+}
+.paneDato{
+    -fx-background-color: #8cc1a1;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10;
+}
+.paneTexto{
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 800;
+}
+.paneAuxDato{
+    -fx-background-color: #6A917A;
+    -fx-border-bottom-left-radius: 5px;
+    -fx-border-bottom-right-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 10;
+}
+.txtContador{
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 32px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 800;
+}
+.txtDesc{
+    -fx-fill: white;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 800;
+}
+.btnExportar{
+    -fx-background-color: #6A917A;
+    -fx-border-width: 1px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 700;
+}
+.txtTitulo2{
+    -fx-fill: #6A917A;
+    -fx-text-fill: #6A917A;
+    -fx-font-size: 20px;
+    -fx-font-family: "Roboto";
+    -fx-font-weight: 800;
+}

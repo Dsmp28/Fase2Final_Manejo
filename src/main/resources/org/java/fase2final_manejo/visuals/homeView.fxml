@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="550.0" prefWidth="750.0" stylesheets="@../stylesheets/lineStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.java.fase2final_manejo.controllers.homeController">
+   <children>
+      <Pane layoutX="14.0" layoutY="15.0" prefHeight="520.0" prefWidth="720.0" styleClass="mainPane">
+         <children>
+            <Pane layoutX="29.0" layoutY="60.0" prefHeight="173.0" prefWidth="325.0" styleClass="paneDato">
+               <children>
+                  <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="188.0" layoutY="9.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/marcablanco.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbMarca" layoutX="21.0" layoutY="40.0" prefHeight="47.0" prefWidth="141.0" styleClass="txtContador" text="X" />
+                  <Label fx:id="lbMarca1" layoutX="21.0" layoutY="87.0" styleClass="txtDesc" text="Marcas registradas" />
+                  <Pane layoutY="144.0" prefHeight="30.0" prefWidth="325.0" styleClass="paneAuxDato">
+                     <children>
+                        <Label layoutX="132.0" layoutY="1.0" styleClass="paneTexto" text="Marcas" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="367.0" layoutY="60.0" prefHeight="173.0" prefWidth="325.0" styleClass="paneDato">
+               <children>
+                  <Label fx:id="lbLineas" layoutX="21.0" layoutY="40.0" prefHeight="47.0" prefWidth="141.0" styleClass="txtContador" text="X" />
+                  <Label fx:id="lbMarca11" layoutX="21.0" layoutY="87.0" styleClass="txtDesc" text="Lineas registradas" />
+                  <ImageView fitHeight="106.0" fitWidth="107.0" layoutX="202.0" layoutY="21.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/lineablanco.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutY="143.0" prefHeight="30.0" prefWidth="325.0" styleClass="paneAuxDato">
+                     <children>
+                        <Label layoutX="132.0" layoutY="1.0" styleClass="paneTexto" text="Líneas" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="367.0" layoutY="250.0" prefHeight="173.0" prefWidth="325.0" styleClass="paneDato">
+               <children>
+                  <Label fx:id="lbVehiculos" layoutX="14.0" layoutY="40.0" prefHeight="47.0" prefWidth="141.0" styleClass="txtContador" text="X" />
+                  <Label layoutX="14.0" layoutY="87.0" styleClass="txtDesc" text="Vehículos registrados" />
+                  <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="191.0" layoutY="14.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/vehiculoblanco.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutY="144.0" prefHeight="30.0" prefWidth="325.0" styleClass="paneAuxDato">
+                     <children>
+                        <Label layoutX="122.0" layoutY="3.0" styleClass="paneTexto" text="Vehículos" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="29.0" layoutY="250.0" prefHeight="173.0" prefWidth="325.0" styleClass="paneDato">
+               <children>
+                  <Label fx:id="lbTipos" layoutX="14.0" layoutY="40.0" prefHeight="47.0" prefWidth="141.0" styleClass="txtContador" text="X" />
+                  <ImageView fitHeight="128.0" fitWidth="128.0" layoutX="181.0" layoutY="11.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/tipoblanco.png" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutY="144.0" prefHeight="30.0" prefWidth="325.0" styleClass="paneAuxDato">
+                     <children>
+                        <Label layoutX="140.0" layoutY="1.0" styleClass="paneTexto" text="Tipos" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="13.0" layoutY="88.0" styleClass="txtDesc" text="Tipos registrados" />
+               </children>
+            </Pane>
+            <Button fx:id="btnExportar" layoutX="319.0" layoutY="450.0" mnemonicParsing="false" onAction="#exportar" prefHeight="30.0" prefWidth="82.0" styleClass="btnExportar" text="Exportar">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label layoutX="29.0" layoutY="23.0" styleClass="txtTitulo2" text="Homescreen" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
