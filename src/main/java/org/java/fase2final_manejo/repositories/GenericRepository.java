@@ -4,6 +4,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.java.fase2final_manejo.models.Linea;
+import org.java.fase2final_manejo.models.Marca;
+import org.java.fase2final_manejo.models.Tipo;
+import org.java.fase2final_manejo.models.Vehiculo;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -31,7 +35,7 @@ public class GenericRepository<T> {
     }
 
     public void save(T entity) {
-        List<T> entities = findAll(); // Cargar todos los datos existentes
+        List<T> entities = findAll(); // Cargar todos los datos existentes para el tipo actual
         boolean updated = false;
 
         // Verificar si el objeto ya existe en la lista para actualizarlo
@@ -56,7 +60,106 @@ public class GenericRepository<T> {
         } catch (IOException e) {
             System.out.println("Error al escribir en el archivo: " + e.getMessage());
         }
+
+        // Actualización en cascada para otros archivos de entidades dependientes
+        if (entity instanceof Marca) {
+            updateDependentsForMarca((Marca) entity);
+        } else if (entity instanceof Linea) {
+            updateDependentsForLinea((Linea) entity);
+        } else if (entity instanceof Tipo) {
+            updateDependentsForTipo((Tipo) entity);
+        }
     }
+
+    // Actualizar dependencias para Marca
+    private void updateDependentsForMarca(Marca updatedMarca) {
+        try {
+            // Leer el archivo de Linea
+            File fileLinea = new File("src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json");
+
+            List<Linea> lineas = objectMapper.readValue(fileLinea,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Linea.class));
+
+            // Actualizar la referencia de Marca en cada Linea
+            for (Linea linea : lineas) {
+                if (linea.getMarca().getId().equals(updatedMarca.getId())) {
+                    linea.setMarca(updatedMarca);
+                }
+            }
+
+            // Guardar el archivo de Linea actualizado
+            objectMapper.writeValue(fileLinea, lineas);
+            saveIndexCascade((List<T>) lineas, "src/main/resources/org/java/fase2final_manejo/Data/indexLinea.txt"); // Actualizar el archivo de índice para Linea
+
+            // Leer el archivo de Vehiculo
+            File fileVehiculo = new File("src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json");
+            List<Vehiculo> vehiculos = objectMapper.readValue(fileVehiculo,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Vehiculo.class));
+
+            // Actualizar la referencia de Marca en cada Vehiculo
+            for (Vehiculo vehiculo : vehiculos) {
+                if (vehiculo.getMarca().getId().equals(updatedMarca.getId())) {
+                    vehiculo.setMarca(updatedMarca);
+                    vehiculo.getLinea().setMarca(updatedMarca);
+                }
+            }
+
+            // Guardar el archivo de Vehiculo actualizado
+            objectMapper.writeValue(fileVehiculo, vehiculos);
+            saveIndexCascade((List<T>) vehiculos, "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt"); // Actualizar el archivo de índice para Vehiculo
+        } catch (IOException e) {
+            System.out.println("Error al actualizar dependencias para Marca: " + e.getMessage());
+        }
+    }
+
+    // Actualizar dependencias para Linea
+    private void updateDependentsForLinea(Linea updatedLinea) {
+        try {
+            // Leer el archivo de Vehiculo
+            File fileVehiculo = new File("src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json");
+            List<Vehiculo> vehiculos = objectMapper.readValue(fileVehiculo,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Vehiculo.class));
+
+            // Actualizar la referencia de Linea en cada Vehiculo
+            for (Vehiculo vehiculo : vehiculos) {
+                if (vehiculo.getLinea().getId().equals(updatedLinea.getId())) {
+                    vehiculo.setLinea(updatedLinea);
+                }
+            }
+
+            // Guardar el archivo de Vehiculo actualizado
+            objectMapper.writeValue(fileVehiculo, vehiculos);
+            saveIndexCascade((List<T>) vehiculos, "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt"); // Actualizar el archivo de índice para Vehiculo
+
+        } catch (IOException e) {
+            System.out.println("Error al actualizar dependencias para Linea: " + e.getMessage());
+        }
+    }
+
+    // Actualizar dependencias para Tipo
+    private void updateDependentsForTipo(Tipo updatedTipo) {
+        try {
+            // Leer el archivo de Vehiculo
+            File fileVehiculo = new File("src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json");
+            List<Vehiculo> vehiculos = objectMapper.readValue(fileVehiculo,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Vehiculo.class));
+
+            // Actualizar la referencia de Tipo en cada Vehiculo
+            for (Vehiculo vehiculo : vehiculos) {
+                if (vehiculo.getTipo().getId().equals(updatedTipo.getId())) {
+                    vehiculo.setTipo(updatedTipo);
+                }
+            }
+
+            // Guardar el archivo de Vehiculo actualizado
+            objectMapper.writeValue(fileVehiculo, vehiculos);
+            saveIndexCascade((List<T>) vehiculos, "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt"); // Actualizar el archivo de índice para Vehiculo
+
+        } catch (IOException e) {
+            System.out.println("Error al actualizar dependencias para Tipo: " + e.getMessage());
+        }
+    }
+
 
     public List<T> findAll() {
         List<T> entities = new ArrayList<>();
@@ -86,6 +189,51 @@ public class GenericRepository<T> {
 
     // Método para guardar el índice
     public void saveIndex(List<T> entities) {
+        List<String> indexEntries = new ArrayList<>();
+        int currentIndex = 2; // Inicia en 2 para considerar el inicio del array '[\n'
+
+        for (int i = 0; i < entities.size(); i++) {
+            try {
+                // Convertir el objeto a JSON
+                String jsonString = objectMapper.writeValueAsString(entities.get(i));
+
+                // Agregar delimitadores solo si no es el último objeto
+                if (i < entities.size() - 1) {
+                    jsonString += ",\n";
+                } else {
+                    jsonString += "\n";
+                }
+
+                // Calcular la longitud en bytes del JSON con delimitadores
+                byte[] jsonData = jsonString.getBytes(StandardCharsets.UTF_8);
+                int length = jsonData.length;
+
+                // Crear la entrada del índice con el nombre del objeto, índice y longitud
+                String name = getName(entities.get(i)); // Usa un método getName() para obtener el nombre
+                String indexEntry = name + ", " + currentIndex + ", " + length;
+                indexEntries.add(indexEntry);
+
+                // Actualizar el índice para el próximo objeto
+                currentIndex += length;
+            } catch (IOException e) {
+                System.out.println("Error al procesar el objeto para el índice: " + e.getMessage());
+            }
+        }
+
+        // Escribir el índice en el archivo, ordenado por nombre
+        indexEntries.sort(Comparator.comparing(entry -> entry.split(", ")[0]));
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(indexFilePath), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+            for (String entry : indexEntries) {
+                writer.write(entry);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo de índice: " + e.getMessage());
+        }
+    }
+
+    // Método para guardar el índice
+    public void saveIndexCascade(List<T> entities, String indexFilePath) {
         List<String> indexEntries = new ArrayList<>();
         int currentIndex = 2; // Inicia en 2 para considerar el inicio del array '[\n'
 

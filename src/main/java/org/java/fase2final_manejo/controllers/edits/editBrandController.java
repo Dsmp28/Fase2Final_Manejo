@@ -74,6 +74,7 @@ public class editBrandController implements Initializable, MensajesEmergentes {
             marca.setFechaCreacion(dpFecha.getValue());
             marcaService.guardarMarca(marca);
             //backupService.generateBackupInBackground();
+            brandController.cargarMarcas();
             mostrarMensajeExito();
             cerrar();
             brandController.lvMarca.getItems().clear();
