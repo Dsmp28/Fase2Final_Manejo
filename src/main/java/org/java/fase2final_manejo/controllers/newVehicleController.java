@@ -123,7 +123,7 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
         tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
         cargarMarcas();
         cargarTipos();
-        //cargarLineas();
+        cargarLineas();
     }
     private void cargarMarcas(){
         cbMarca.getItems().addAll(marcaService.obtenerTodasLasMarcas());
@@ -134,6 +134,9 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
     }
     @FXML
     private void cargarLineas() {
+        if(cbMarca.getValue() == null) {
+            return;
+        }
         cbLinea.getItems().clear();
         List<Linea> lineas = lineaService.obtenerLineaPorMarca(cbMarca.getValue().getId())
                 .stream()
