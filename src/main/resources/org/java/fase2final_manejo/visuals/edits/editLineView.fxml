@@ -46,7 +46,7 @@
                         <TextField fx:id="txtAnio" promptText="Año" />
                     </children>
                 </VBox>
-                <Button fx:id="btnAñadir" layoutX="104.0" layoutY="195.0" mnemonicParsing="false" onAction="#editarLinea" styleClass="btnNuevo" text="Editar">
+                <Button fx:id="btnAñadir" layoutX="72.0" layoutY="196.0" mnemonicParsing="false" onAction="#editarLinea" styleClass="btnNuevo" text="Guardar cambios">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

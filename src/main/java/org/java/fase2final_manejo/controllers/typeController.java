@@ -38,7 +38,7 @@ public class typeController implements Initializable {
     @FXML
     private TextField txtBuscarNombre;
     @FXML
-    private ListView<Tipo> lvTipo;
+    private ListView<Tipo> lvTipo = new ListView<Tipo>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,6 +84,7 @@ public class typeController implements Initializable {
     }
 
     public void cargarTipos(){
+        tipoService = new TipoService(new TipoRepository("src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json", "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt"));
         List<Tipo> tipos = tipoService.obtenerTodoslosTipos();
         ObservableList<Tipo> observableList = FXCollections.observableArrayList(tipos);
         lvTipo.setItems(observableList);

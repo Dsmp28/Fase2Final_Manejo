@@ -60,6 +60,7 @@ public class editBrandController implements Initializable, MensajesEmergentes {
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));
+        brandController = new org.java.fase2final_manejo.controllers.brandController();
     }
     @FXML
     private void editarMarca(){
@@ -73,9 +74,10 @@ public class editBrandController implements Initializable, MensajesEmergentes {
             marca.setFechaCreacion(dpFecha.getValue());
             marcaService.guardarMarca(marca);
             //backupService.generateBackupInBackground();
-            brandController.cargarMarcas();
             mostrarMensajeExito();
             cerrar();
+            brandController.lvMarca.getItems().clear();
+            brandController.cargarMarcas();
         } catch (Exception e) {
             mostrarMensajeError(e.getMessage());
         }

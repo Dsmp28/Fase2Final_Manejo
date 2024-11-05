@@ -40,7 +40,7 @@ public class lineController implements Initializable {
     @FXML
     private TextField txtBuscarLinea;
     @FXML
-    private ListView<Linea> lvLinea;
+    private ListView<Linea> lvLinea = new ListView<Linea>();
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
@@ -87,6 +87,7 @@ public class lineController implements Initializable {
     }
 
     public void cargarLineas(){
+        lineaService = new LineaService(new LineaRepository("src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json", "src/main/resources/org/java/fase2final_manejo/Data/indexLinea.txt"));
         List<Linea> lineas = lineaService.obtenerTodoslasLineas();
 
         ObservableList<Linea> observableList = FXCollections.observableArrayList(lineas);

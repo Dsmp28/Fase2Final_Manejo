@@ -46,7 +46,7 @@
                         <TextField fx:id="txtFundador" promptText="Fundador" />
                     </children>
                 </VBox>
-                <Button fx:id="btnAñadir" layoutX="105.0" layoutY="185.0" mnemonicParsing="false" onAction="#editarMarca" styleClass="btnNuevo" text="Editar">
+                <Button fx:id="btnAñadir" layoutX="72.0" layoutY="190.0" mnemonicParsing="false" onAction="#editarMarca" styleClass="btnNuevo" text="Guardar cambios">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

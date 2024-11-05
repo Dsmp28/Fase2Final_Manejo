@@ -79,6 +79,7 @@ public class brandCell extends ListCell<Marca> implements MensajesEmergentes {
             if (marca != null) {
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/edits/editBrandView.fxml"));
+
                     //loader.setControllerFactory(Main.context::getBean);
                     Parent root = loader.load();
                     editBrandController controller = loader.getController();

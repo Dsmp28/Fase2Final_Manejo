@@ -72,6 +72,7 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        vehicleController = new org.java.fase2final_manejo.controllers.vehicleController();
 //        backupService = Main.context.getBean(BackupService.class);
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
