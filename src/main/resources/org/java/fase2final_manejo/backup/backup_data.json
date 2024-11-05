@@ -1,6 +1,56 @@
 {
-  "lineas" : [ ],
-  "marcas" : [ ],
-  "tipos" : [ ],
-  "vehiculos" : [ ]
+  "lineas" : [ {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Prueba 1",
+      "fechaCreacion" : [ 2024, 11, 12 ],
+      "fundador" : "12"
+    },
+    "nombreLinea" : "Linea 1",
+    "ano" : 3
+  } ],
+  "marcas" : [ {
+    "id" : 0,
+    "nombre" : "Prueba 1",
+    "fechaCreacion" : [ 2024, 11, 12 ],
+    "fundador" : "12"
+  } ],
+  "tipos" : [ {
+    "id" : 0,
+    "nombreTipo" : "Tipo 1",
+    "ano" : 1
+  } ],
+  "vehiculos" : [ {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Prueba 1",
+      "fechaCreacion" : [ 2024, 11, 12 ],
+      "fundador" : "12"
+    },
+    "modelo" : "1",
+    "color" : "1",
+    "placa" : "12",
+    "chasis" : "1",
+    "motor" : "1",
+    "vin" : "1",
+    "asientos" : 1,
+    "tipo" : {
+      "id" : 0,
+      "nombreTipo" : "Tipo 1",
+      "ano" : 1
+    },
+    "linea" : {
+      "id" : 0,
+      "marca" : {
+        "id" : 0,
+        "nombre" : "Prueba 1",
+        "fechaCreacion" : [ 2024, 11, 12 ],
+        "fundador" : "12"
+      },
+      "nombreLinea" : "Linea 1",
+      "ano" : 3
+    }
+  } ]
 }

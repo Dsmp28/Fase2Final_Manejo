@@ -1,1 +1,5 @@
-[]
+[ {
+  "id" : 0,
+  "nombreTipo" : "Tipo 1",
+  "ano" : 1
+} ]
