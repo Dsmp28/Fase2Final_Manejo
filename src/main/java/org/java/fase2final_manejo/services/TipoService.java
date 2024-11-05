@@ -15,8 +15,8 @@ public class TipoService {
     public List<Tipo> obtenerTodoslosTipos(){
         return tipoRepository.findAll();
     }
-    public void obtenerTipoPorId(Long id){
-        tipoRepository.findById(id);
+    public Optional<Tipo> obtenerTipoPorId(Long id){
+        return tipoRepository.findById(id);
     }
     public void guardarTipo(Tipo tipo){
         tipoRepository.save(tipo);
