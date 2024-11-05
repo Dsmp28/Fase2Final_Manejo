@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.java.fase2final_manejo.Main;
+import javafx.util.StringConverter;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import org.java.fase2final_manejo.models.Linea;
 import org.java.fase2final_manejo.models.Marca;
@@ -21,7 +21,9 @@ import org.java.fase2final_manejo.services.*;
 
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class editVehicleController implements Initializable, MensajesEmergentes {
     @FXML
@@ -120,7 +122,7 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
     private void llenarCampos(){
         txtModelo.setText(vehiculo.getModelo());
         txtColor.setText(vehiculo.getColor());
-        txtPlaca.setText(vehiculo.getPlaca());
+        txtPlaca.setText(vehiculo.getNombre());
         txtChasis.setText(vehiculo.getChasis());
         txtMotor.setText(vehiculo.getMotor());
         txtVin.setText(vehiculo.getVin());
@@ -137,10 +139,31 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
         cbTipo.getItems().addAll(tipoService.obtenerTodoslosTipos());
     }
     @FXML
-    private void cargarLineas(){
+    private void cargarLineas() {
         cbLinea.getItems().clear();
-        cbLinea.getItems().addAll(lineaService.obtenerLineaPorMarca(cbMarca.getValue().getId()));
+        List<Linea> lineas = lineaService.obtenerLineaPorMarca(cbMarca.getValue().getId())
+                .stream()
+                .filter(linea -> linea != null)  // Filtra los elementos nulos
+                .collect(Collectors.toList());
+        cbLinea.getItems().addAll(lineas);
+
+        // Configurar el ComboBox para mostrar solo el nombre de la línea
+        cbLinea.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Linea linea) {
+                return (linea != null) ? linea.getNombreLinea() : ""; // Asegura que linea no sea null
+            }
+
+            @Override
+            public Linea fromString(String string) {
+                return cbLinea.getItems().stream()
+                        .filter(linea -> linea != null && linea.getNombreLinea().equals(string))
+                        .findFirst()
+                        .orElse(null);
+            }
+        });
     }
+
 
     private void mostrarMensajeError(String mensaje){
         String mensajeFormateado = String.format("No se pudo guardar el vehiculo, por favor revise los datos\nError: %s", mensaje);

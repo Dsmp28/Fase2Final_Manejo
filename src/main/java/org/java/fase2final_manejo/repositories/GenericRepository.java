@@ -5,12 +5,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GenericRepository<T> {
 
@@ -57,19 +59,22 @@ public class GenericRepository<T> {
     }
 
     public List<T> findAll() {
-        File file = new File(dataFilePath);
         List<T> entities = new ArrayList<>();
+        File file = new File(dataFilePath);
 
         if (file.exists()) {
             try {
                 entities = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
             } catch (IOException e) {
-                System.out.println("Error al leer el archivo: " + e.getMessage());
+                System.err.println("Error al leer el archivo JSON en " + dataFilePath + ": " + e.getMessage());
             }
+        } else {
+            System.out.println("El archivo no existe en la ruta: " + dataFilePath);
         }
 
         return entities;
     }
+
 
     private Object getId(T entity) {
         try {
@@ -80,34 +85,41 @@ public class GenericRepository<T> {
     }
 
     // Método para guardar el índice
-    private void saveIndex(List<T> entities) {
+    public void saveIndex(List<T> entities) {
         List<String> indexEntries = new ArrayList<>();
-        int currentIndex = 0;
+        int currentIndex = 2; // Inicia en 2 para considerar el inicio del array '[\n'
 
-        for (T entity : entities) {
+        for (int i = 0; i < entities.size(); i++) {
             try {
-                // Convertir el objeto a JSON para calcular su longitud
-                String jsonString = objectMapper.writeValueAsString(entity);
-                int length = jsonString.getBytes().length;
+                // Convertir el objeto a JSON
+                String jsonString = objectMapper.writeValueAsString(entities.get(i));
 
-                // Crear el índice del objeto: "nombre del objeto, índice, longitud"
-                String name = entity.toString(); // Asumiendo que el método toString() devuelve el nombre del objeto
+                // Agregar delimitadores solo si no es el último objeto
+                if (i < entities.size() - 1) {
+                    jsonString += ",\n";
+                } else {
+                    jsonString += "\n";
+                }
+
+                // Calcular la longitud en bytes del JSON con delimitadores
+                byte[] jsonData = jsonString.getBytes(StandardCharsets.UTF_8);
+                int length = jsonData.length;
+
+                // Crear la entrada del índice con el nombre del objeto, índice y longitud
+                String name = getName(entities.get(i)); // Usa un método getName() para obtener el nombre
                 String indexEntry = name + ", " + currentIndex + ", " + length;
                 indexEntries.add(indexEntry);
 
                 // Actualizar el índice para el próximo objeto
-                currentIndex += length + 1; // Sumando 1 por el salto de línea entre objetos
-
+                currentIndex += length;
             } catch (IOException e) {
                 System.out.println("Error al procesar el objeto para el índice: " + e.getMessage());
             }
         }
 
-        // Ordenar los índices alfabéticamente por el nombre del objeto
+        // Escribir el índice en el archivo, ordenado por nombre
         indexEntries.sort(Comparator.comparing(entry -> entry.split(", ")[0]));
-
-        // Escribir los índices en el archivo indexFilePath
-        try (BufferedWriter writer = Files.newBufferedWriter(new File(indexFilePath).toPath(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
+        try (BufferedWriter writer = Files.newBufferedWriter(Path.of(indexFilePath), StandardCharsets.UTF_8, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
             for (String entry : indexEntries) {
                 writer.write(entry);
                 writer.newLine();
@@ -117,6 +129,7 @@ public class GenericRepository<T> {
         }
     }
 
+
     public void deleteById(Long id){
 
     }
@@ -125,8 +138,61 @@ public class GenericRepository<T> {
         return findAll().size();
     }
 
-    public Optional<T> findById(Long id){
-        return Optional.empty();
+    public List<T> searchByName(String name) {
+        List<T> results = new ArrayList<>();
+        Path filePath = Path.of(dataFilePath);
+
+        // Leer el archivo de índices y buscar coincidencias de nombre
+        try (BufferedReader reader = new BufferedReader(new FileReader(indexFilePath))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(", ");
+                if (parts.length != 3) continue;
+
+                String objectName = parts[0];
+                int index = Integer.parseInt(parts[1]);
+                int length = Integer.parseInt(parts[2]);
+
+                // Si el nombre en el índice coincide con el parámetro de búsqueda
+                if (objectName.toLowerCase().contains(name.toLowerCase())) {
+                    // Extraer el fragmento JSON específico desde el archivo usando el índice y la longitud
+                    T object = loadObjectFromJson(index, length);
+                    if (object != null) {
+                        results.add(object);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo de índices: " + e.getMessage());
+        }
+
+        return results;
     }
+
+    private T loadObjectFromJson(int index, int length) {
+        try (RandomAccessFile file = new RandomAccessFile(dataFilePath, "r")) {
+            file.seek(index);
+            byte[] data = new byte[length];
+            file.readFully(data);
+
+            String json = new String(data, StandardCharsets.UTF_8);
+            return objectMapper.readValue(json, clazz);
+        } catch (IOException e) {
+            System.out.println("Error al cargar el objeto desde el archivo JSON: " + e.getMessage());
+            return null;
+        }
+    }
+
+    private String getName(T entity) {
+        try {
+            // Asume que hay un método `getNombre` en la clase T que devuelve el nombre
+            return (String) entity.getClass().getMethod("getNombre").invoke(entity);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el nombre del objeto", e);
+        }
+    }
+
+
 }
 

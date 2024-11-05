@@ -10,6 +10,6 @@ public class VehiculoRepository extends GenericRepository<Vehiculo> {
     }
 
     public List<Vehiculo> findByPlacaContainingIgnoreCase(String placa) {
-        return null;
+        return searchByName(placa);
     }
 }

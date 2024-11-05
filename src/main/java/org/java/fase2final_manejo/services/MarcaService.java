@@ -18,10 +18,6 @@ public class MarcaService {
         return marcaRepository.findAll();
     }
 
-    public Optional<Marca> obtenerMarcaPorId(Long id) {
-        return marcaRepository.findById(id);
-    }
-
     public void guardarMarca(Marca marca) {
         if (marca.getFechaCreacion() == null) {
             marca.setFechaCreacion(LocalDate.now());  // Asegurarse de que la fecha de creación esté presente

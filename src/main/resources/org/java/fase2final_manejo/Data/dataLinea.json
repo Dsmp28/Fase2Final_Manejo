@@ -1,11 +1,1 @@
-[ {
-  "id" : 0,
-  "marca" : {
-    "id" : 0,
-    "nombre" : "Prueba 1",
-    "fechaCreacion" : [ 2024, 11, 4 ],
-    "fundador" : "12"
-  },
-  "nombreLinea" : "PP",
-  "ano" : 2022
-} ]
+[]

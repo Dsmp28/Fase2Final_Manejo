@@ -1,16 +1,1 @@
-[ {
-  "id" : 0,
-  "nombre" : "Prueba 1",
-  "fechaCreacion" : [ 2024, 11, 4 ],
-  "fundador" : "13"
-}, {
-  "id" : 1,
-  "nombre" : "Prueba 2",
-  "fechaCreacion" : [ 2024, 11, 4 ],
-  "fundador" : "2"
-}, {
-  "id" : 2,
-  "nombre" : "Prueba 1",
-  "fechaCreacion" : [ 2024, 11, 5 ],
-  "fundador" : "2"
-} ]
+[]

@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import org.java.fase2final_manejo.models.Linea;
 import org.java.fase2final_manejo.models.Marca;
@@ -63,7 +62,7 @@ public class editLineController implements Initializable, MensajesEmergentes {
         llenarCampos();
     }
     private void llenarCampos(){
-        txtLinea.setText(linea.getNombreLinea());
+        txtLinea.setText(linea.getNombre());
         txtAnio.setText(String.valueOf(linea.getAno()));
         cbMarca.setValue(linea.getMarca());
     }
