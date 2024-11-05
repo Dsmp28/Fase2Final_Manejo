@@ -18,6 +18,7 @@ import javafx.stage.StageStyle;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import org.java.fase2final_manejo.controllers.edits.editVehicleController;
 import org.java.fase2final_manejo.models.Vehiculo;
+import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.VehiculoService;
 
 import java.io.File;
@@ -155,12 +156,12 @@ public class vehicleCell extends ListCell<Vehiculo> implements MensajesEmergente
         eliminar.setCursor(javafx.scene.Cursor.HAND);
 
         eliminar.setOnAction(event -> {
-            //BackupService backupService = Main.context.getBean(BackupService.class);
+            BackupService backupService = new BackupService();
             Vehiculo item = getItem();
             if (item != null && mostrarMensajeConfirmacion("Eliminar vehiculo", "¿Estás seguro de eliminar el vehiculo de placa: " + item.getPlaca() + "?", "Esta acción no se puede deshacer")) {
                 items.remove(item);
                 vehiculoService.eliminarVehiculo(item.getId());
-                //backupService.generateBackupInBackground();
+                backupService.generateBackupInBackground();
                 mostrarMensajeExito();
             }
         });

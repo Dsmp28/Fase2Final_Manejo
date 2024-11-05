@@ -49,16 +49,18 @@ public class newBrandController implements Initializable, MensajesEmergentes {
                 throw new Exception("Todos los campos son obligatorios");
             }
 
-            // Verificar si ya existe una marca con el mismo nombre
-            List<Marca> marcasExistentes = marcaService.buscarMarcaPorNombre(nombreMarca);
-            if (!marcasExistentes.isEmpty()) {
-                mostrarMensajeError("Ya existe una marca con el nombre ingresado.");
-                return;
+            // Verificar si ya existe una marca con el mismo nombre y diferente ID
+            List<Marca> marcasExistentes = marcaService.buscarMarcaPorNombre(txtMarca.getText());
+            for (Marca marcaExistente : marcasExistentes) {
+                if (marcaExistente.getNombre().equalsIgnoreCase(txtMarca.getText())) {
+                    mostrarMensajeError("Ya existe una marca con el nombre ingresado.");
+                    return;
+                }
             }
 
             Marca nuevaMarca = new Marca(nombreMarca, fecha, fundador);
             marcaService.guardarMarca(nuevaMarca);
-            //backupService.generateBackup();
+            backupService.generateBackup();
             mostrarMensajeExito();
             cerrar();
         } catch (Exception e) {
@@ -69,7 +71,7 @@ public class newBrandController implements Initializable, MensajesEmergentes {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));

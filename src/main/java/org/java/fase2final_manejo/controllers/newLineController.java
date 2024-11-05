@@ -56,15 +56,18 @@ public class newLineController implements Initializable, MensajesEmergentes {
                 throw new Exception("Todos los campos son obligatorios");
             }
 
-            List<Linea> lineasExistentes = lineaService.buscarLineaPorNombre(nombreLinea);
-            if (!lineasExistentes.isEmpty()) {
-                mostrarMensajeError("Ya existe una línea con el nombre ingresado.");
-                return;
+            // Verificar si ya existe una línea con el mismo nombre y diferente ID
+            List<Linea> lineasExistentes = lineaService.buscarLineaPorNombre(txtLinea.getText());
+            for (Linea lineaExistente : lineasExistentes) {
+                if (lineaExistente.getNombreLinea().equalsIgnoreCase(txtLinea.getText())) {
+                    mostrarMensajeError("Ya existe una línea con el nombre ingresado.");
+                    return;
+                }
             }
 
             Linea nuevaLinea = new Linea(marca, nombreLinea, anio);
             lineaService.guardarLinea(nuevaLinea);
-            //backupService.generateBackup();
+            backupService.generateBackup();
             mostrarMensajeExito();
             cerrar();
         } catch (Exception e) {
@@ -74,7 +77,7 @@ public class newLineController implements Initializable, MensajesEmergentes {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";

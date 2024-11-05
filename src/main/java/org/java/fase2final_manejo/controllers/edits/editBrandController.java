@@ -16,6 +16,7 @@ import org.java.fase2final_manejo.services.MarcaService;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -56,7 +57,7 @@ public class editBrandController implements Initializable, MensajesEmergentes {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));
@@ -69,11 +70,20 @@ public class editBrandController implements Initializable, MensajesEmergentes {
                 mostrarMensajeEmergente(Alert.AlertType.ERROR, "Error", "Campos vacios", "Por favor llene todos los campos");
                 return;
             }
+            // Verificar si ya existe una marca con el mismo nombre y diferente ID
+            List<Marca> marcasExistentes = marcaService.buscarMarcaPorNombre(txtMarca.getText());
+            for (Marca marcaExistente : marcasExistentes) {
+                if (!marcaExistente.getId().equals(marca.getId()) && marcaExistente.getNombre().equalsIgnoreCase(txtMarca.getText())) {
+                    mostrarMensajeError("Ya existe una marca con el nombre ingresado.");
+                    return;
+                }
+            }
+
             marca.setNombre(txtMarca.getText());
             marca.setFundador(txtFundador.getText());
             marca.setFechaCreacion(dpFecha.getValue());
             marcaService.guardarMarca(marca);
-            //backupService.generateBackupInBackground();
+            backupService.generateBackupInBackground();
             brandController.cargarMarcas();
             mostrarMensajeExito();
             cerrar();
