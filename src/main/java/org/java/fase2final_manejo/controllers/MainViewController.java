@@ -44,7 +44,7 @@ public class MainViewController implements Initializable {
 
     private void cargarFxml(String fxml) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/" + fxml));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/" + fxml));
 
             Parent root = fxmlLoader.load();
 
