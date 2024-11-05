@@ -13,6 +13,8 @@ module org.java.fase2final_manejo {
     exports org.java.fase2final_manejo.controllers;
     opens org.java.fase2final_manejo.models to com.fasterxml.jackson.databind;
 
+    opens org.java.fase2final_manejo.controllers.edits to javafx.fxml;
+    exports org.java.fase2final_manejo.controllers.edits;
     exports org.java.fase2final_manejo;
     exports org.java.fase2final_manejo.models;
 }

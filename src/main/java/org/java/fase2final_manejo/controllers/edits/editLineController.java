@@ -2,6 +2,7 @@ package org.java.fase2final_manejo.controllers.edits;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -40,6 +41,7 @@ public class editLineController implements Initializable, MensajesEmergentes {
 
     private Linea linea;
     private BackupService backupService;
+    private org.java.fase2final_manejo.controllers.lineController lineController;
 
     @FXML
     private void cerrar(){
@@ -54,6 +56,7 @@ public class editLineController implements Initializable, MensajesEmergentes {
         String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";
         String indexLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexLinea.txt";
         lineaService = new LineaService(new LineaRepository(dataLineaPath, indexLineaPath));
+        inicializarComboBox();
     }
     public void setLinea(Linea linea){
         this.linea = linea;
@@ -66,15 +69,39 @@ public class editLineController implements Initializable, MensajesEmergentes {
     }
     @FXML
     private void editarLinea(){
-//        try {
-//            //Código para editar una línea
-//            backupService.generateBackup(); //Esto genera el backup. Al hacer el editar agregarlo antes de mostrar el mensaje de que se edito con exito
-//        }catch (Exception e){
-//            //Excepción
-//        }
+        try {
+            if (cbMarca.getValue() == null || txtLinea.getText().isEmpty()){
+                mostrarMensajeError("Todos los campos son obligatorios");
+                return;
+            }
+            linea.setMarca(cbMarca.getValue());
+            linea.setNombreLinea(txtLinea.getText());
+            linea.setAno(Integer.parseInt(txtAnio.getText()));
+            lineaService.guardarLinea(linea);
+            //backupService.generateBackupInBackground();
+            lineController.cargarLineas();
+            mostrarMensajeExito();
+            cerrar();
+        }catch (Exception e){
+            //Excepción
+        }
     }
 
     public void setStage(Stage emergente) {
         this.stage = emergente;
+    }
+
+    private void mostrarMensajeError(String mensaje){
+        String mensajeFormateado = String.format("No se pudo editar la línea, por favor revise los datos\nError: %s", mensaje);
+
+        mostrarMensajeEmergente(Alert.AlertType.ERROR, "Error", "Error al editar", mensajeFormateado);
+    }
+
+    private void mostrarMensajeExito(){
+        mostrarMensajeEmergente(Alert.AlertType.INFORMATION, "Exito", "Linea editada", "La linea se edito correctamente");
+    }
+
+    private void inicializarComboBox(){
+        cbMarca.getItems().addAll(marcaService.obtenerTodasLasMarcas());
     }
 }
