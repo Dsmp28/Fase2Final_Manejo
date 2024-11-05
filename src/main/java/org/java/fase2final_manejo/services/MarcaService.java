@@ -15,7 +15,7 @@ public class MarcaService {
     }
 
     public List<Marca> obtenerTodasLasMarcas() {
-        return (List<Marca>) marcaRepository.findAll();
+        return marcaRepository.findAll();
     }
 
     public Optional<Marca> obtenerMarcaPorId(Long id) {

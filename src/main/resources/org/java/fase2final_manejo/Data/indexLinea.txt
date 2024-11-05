@@ -1,1 +1,1 @@
-0,Corolla,0,201
+org.java.fase2final_manejo.models.Linea@95ea565, 0, 185

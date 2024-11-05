@@ -62,7 +62,7 @@ public class GenericRepository<T> {
 
         if (file.exists()) {
             try {
-                entities = objectMapper.readValue(file, new TypeReference<List<T>>() {});
+                entities = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
             } catch (IOException e) {
                 System.out.println("Error al leer el archivo: " + e.getMessage());
             }
