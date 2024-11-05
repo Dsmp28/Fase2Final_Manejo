@@ -15,6 +15,7 @@ import javafx.stage.StageStyle;
 import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.cells.brandCell;
 import org.java.fase2final_manejo.models.Marca;
+import org.java.fase2final_manejo.repositories.MarcaRepository;
 import org.java.fase2final_manejo.services.MarcaService;
 import javafx.scene.control.Button;
 
@@ -38,17 +39,15 @@ public class brandController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resourceBundle) {
-        if (marcaService != null) {
-            System.out.println("MarcaService cargado correctamente");
-        } else {
-            System.out.println("MarcaService no cargado");
-        }
+        String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
+        String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
+        marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));
         cargarMarcas();
     }
     @FXML
     public void abrirVentanaNuevaMarca(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/newBrandView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/newBrandView.fxml"));
             //loader.setControllerFactory(Main.context::getBean);
             Parent root = loader.load();
 

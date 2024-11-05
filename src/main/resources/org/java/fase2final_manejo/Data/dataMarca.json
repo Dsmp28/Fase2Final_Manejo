@@ -1,16 +1,1 @@
-{
-  "id" : 0,
-  "nombre" : "Toyota",
-  "fechaCreacion" : [ 1937, 8, 28 ],
-  "fundador" : "Kiichiro Toyoda"
-}{
-  "id" : 0,
-  "nombre" : "Toyota",
-  "fechaCreacion" : [ 1937, 8, 28 ],
-  "fundador" : "Kiichiro Toyoda"
-}{
-  "id" : 1,
-  "nombre" : "Ford",
-  "fechaCreacion" : [ 1903, 6, 16 ],
-  "fundador" : "Henry Ford"
-}
+[]

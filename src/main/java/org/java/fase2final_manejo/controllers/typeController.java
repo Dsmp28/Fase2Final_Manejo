@@ -17,6 +17,7 @@ import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.cells.typeCell;
 import org.java.fase2final_manejo.models.Marca;
 import org.java.fase2final_manejo.models.Tipo;
+import org.java.fase2final_manejo.repositories.TipoRepository;
 import org.java.fase2final_manejo.services.MarcaService;
 import org.java.fase2final_manejo.services.TipoService;
 
@@ -41,11 +42,9 @@ public class typeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if (tipoService != null) {
-            System.out.println("MarcaService cargado correctamente");
-        } else {
-            System.out.println("MarcaService no cargado");
-        }
+        String dataTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json";
+        String indexTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt";
+        tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
         cargarTipos();
     }
 

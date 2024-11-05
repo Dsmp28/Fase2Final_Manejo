@@ -67,7 +67,7 @@ public class brandCell extends ListCell<Marca> implements MensajesEmergentes {
         imageEditar = new ImageView();
         imageEditar.setFitHeight(16);
         imageEditar.setFitWidth(16);
-        imageEditar.setImage(new Image(new File("src/main/resources/org/java/fx/images/editar.png").toURI().toString()));
+        imageEditar.setImage(new Image(new File("src/main/resources/org/java/fase2final_manejo/images/editar.png").toURI().toString()));
 
         editar = new Button("", imageEditar);
         editar.setStyle("-fx-background-color: #8cc1a1");
@@ -78,7 +78,7 @@ public class brandCell extends ListCell<Marca> implements MensajesEmergentes {
             Marca marca = getItem();
             if (marca != null) {
                 try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/edits/editBrandView.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/edits/editBrandView.fxml"));
                     //loader.setControllerFactory(Main.context::getBean);
                     Parent root = loader.load();
                     editBrandController controller = loader.getController();
@@ -103,7 +103,7 @@ public class brandCell extends ListCell<Marca> implements MensajesEmergentes {
         imageEliminar = new ImageView();
         imageEliminar.setFitHeight(16);
         imageEliminar.setFitWidth(16);
-        imageEliminar.setImage(new Image(new File("src/main/resources/org/java/fx/images/basura.png").toURI().toString()));
+        imageEliminar.setImage(new Image(new File("src/main/resources/org/java/fase2final_manejo/images/basura.png").toURI().toString()));
         eliminar = new Button("", imageEliminar);
         eliminar.setStyle("-fx-background-color: red");
         eliminar.setPrefSize(24, 24);

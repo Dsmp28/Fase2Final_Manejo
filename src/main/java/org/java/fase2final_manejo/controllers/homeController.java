@@ -5,6 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.java.fase2final_manejo.models.Linea;
+import org.java.fase2final_manejo.repositories.LineaRepository;
+import org.java.fase2final_manejo.repositories.MarcaRepository;
+import org.java.fase2final_manejo.repositories.TipoRepository;
+import org.java.fase2final_manejo.repositories.VehiculoRepository;
 import org.java.fase2final_manejo.services.LineaService;
 import org.java.fase2final_manejo.services.MarcaService;
 import org.java.fase2final_manejo.services.TipoService;
@@ -44,6 +49,19 @@ public class homeController implements Initializable, MensajesEmergentes {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
+        String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
+        String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";
+        String indexLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexLinea.txt";
+        String dataVehiculoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json";
+        String indexVehiculoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt";
+        String dataTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json";
+        String indexTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt";
+
+        marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));
+        lineaService = new LineaService(new LineaRepository(dataLineaPath, indexLineaPath));
+        vehiculoService = new VehiculoService(new VehiculoRepository(dataVehiculoPath, indexVehiculoPath));
+        tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
         llenarLabels();
     }
 
