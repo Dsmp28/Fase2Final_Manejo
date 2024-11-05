@@ -17,6 +17,7 @@ import org.java.fase2final_manejo.repositories.VehiculoRepository;
 import org.java.fase2final_manejo.services.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class newLineController implements Initializable, MensajesEmergentes {
@@ -45,20 +46,28 @@ public class newLineController implements Initializable, MensajesEmergentes {
     }
 
     @FXML
-    private void agregarNuevo(){
+    private void agregarNuevo() {
         try {
             Marca marca = cbMarca.getValue();
-            String nombreLinea = txtLinea.getText();
+            String nombreLinea = txtLinea.getText().trim();
             Integer anio = Integer.parseInt(txtAnio.getText());
-            if (marca == null || nombreLinea.isEmpty()){
+
+            if (marca == null || nombreLinea.isEmpty()) {
                 throw new Exception("Todos los campos son obligatorios");
             }
-            Linea linea = new Linea(marca, nombreLinea, anio);
-            lineaService.guardarLinea(linea);
+
+            List<Linea> lineasExistentes = lineaService.buscarLineaPorNombre(nombreLinea);
+            if (!lineasExistentes.isEmpty()) {
+                mostrarMensajeError("Ya existe una línea con el nombre ingresado.");
+                return;
+            }
+
+            Linea nuevaLinea = new Linea(marca, nombreLinea, anio);
+            lineaService.guardarLinea(nuevaLinea);
             //backupService.generateBackup();
             mostrarMensajeExito();
             cerrar();
-        }catch (Exception e){
+        } catch (Exception e) {
             mostrarMensajeError(e.getMessage());
         }
     }

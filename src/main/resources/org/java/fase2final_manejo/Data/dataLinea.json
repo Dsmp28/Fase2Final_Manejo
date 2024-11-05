@@ -1,1 +1,11 @@
-[]
+[ {
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 2024, 11, 5 ],
+    "fundador" : "Christopher Yuman"
+  },
+  "nombreLinea" : "Pene",
+  "ano" : 2004
+} ]

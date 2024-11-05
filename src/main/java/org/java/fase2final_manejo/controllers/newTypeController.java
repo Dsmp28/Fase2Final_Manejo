@@ -15,6 +15,7 @@ import org.java.fase2final_manejo.services.*;
 
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -40,22 +41,33 @@ public class newTypeController implements Initializable, MensajesEmergentes {
     }
 
     @FXML
-    private void agregarNuevo(){
+    private void agregarNuevo() {
         try {
-            String nombreTipo = txtTipo.getText();
+            String nombreTipo = txtTipo.getText().trim();
             Integer anio = Integer.parseInt(txtAnio.getText());
-            if (nombreTipo.isEmpty()){
+
+            if (nombreTipo.isEmpty()) {
                 throw new Exception("Todos los campos son obligatorios");
             }
-            tipoService.guardarTipo(new Tipo(nombreTipo, anio));
-//            backupService.generateBackup();
+
+            // Verificar si ya existe un tipo con el mismo nombre
+            List<Tipo> tiposExistentes = tipoService.buscarTipoPorNombre(nombreTipo);
+            if (!tiposExistentes.isEmpty()) {
+                mostrarMensajeError("Ya existe un tipo con el nombre ingresado.");
+                return;
+            }
+
+            Tipo nuevoTipo = new Tipo(nombreTipo, anio);
+            tipoService.guardarTipo(nuevoTipo);
+            //            backupService.generateBackup();
 //            backupService.generateBackupInBackground();
             mostrarMensajeExito();
             cerrar();
-        }catch (Exception e){
+        } catch (Exception e) {
             mostrarMensajeError(e.getMessage());
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
