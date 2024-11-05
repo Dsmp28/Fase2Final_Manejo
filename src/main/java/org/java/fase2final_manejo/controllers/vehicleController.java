@@ -79,7 +79,7 @@ public class vehicleController implements Initializable {
     @FXML
     public void abrirVentanaNuevoVehiculo(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/newVehicleView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/newVehicleView.fxml"));
 //            loader.setControllerFactory(Main.context::getBean);
             Parent root = loader.load();
 

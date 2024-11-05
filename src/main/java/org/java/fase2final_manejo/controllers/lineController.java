@@ -65,7 +65,7 @@ public class lineController implements Initializable {
     @FXML
     public void abrirVentanaNuevaLinea(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/newLineView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/newLineView.fxml"));
             //loader.setControllerFactory(Main.context::getBean);
             Parent root = loader.load();
 
