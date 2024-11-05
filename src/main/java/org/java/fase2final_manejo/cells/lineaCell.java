@@ -1,7 +1,6 @@
 package org.java.fase2final_manejo.cells;
 
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.collections.ObservableList;
@@ -11,18 +10,14 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.controllers.edits.editLineController;
 import org.java.fase2final_manejo.models.Linea;
-import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.LineaService;
 import java.io.File;
 import java.io.IOException;
@@ -105,7 +100,7 @@ public class lineaCell extends ListCell<Linea> implements MensajesEmergentes {
         eliminar.setOnAction(event -> {
             //BackupService backupService = Main.context.getBean(BackupService.class);
             Linea item = getItem();
-            if (item != null && mostrarMensajeConfirmacion("Eliminar línea", "¿Estás seguro de eliminar la línea: " + item.getNombreLinea() + "?", "Esta acción no se puede deshacer")) {
+            if (item != null && mostrarMensajeConfirmacion("Eliminar línea", "¿Estás seguro de eliminar la línea: " + item.getNombre() + "?", "Esta acción no se puede deshacer")) {
                 items.remove(item);
                 lineaService.eliminarLinea(item.getId());
 //                try {
@@ -132,7 +127,7 @@ public class lineaCell extends ListCell<Linea> implements MensajesEmergentes {
     protected void updateItem(Linea item, boolean empty) {
         super.updateItem(item, empty);
         if (item != null && !empty) {
-            nombre.setText(item.getNombreLinea());
+            nombre.setText(item.getNombre());
             año.setText(item.getAno().toString());
             marca.setText(item.getMarca().getNombre());
             setGraphic(content);

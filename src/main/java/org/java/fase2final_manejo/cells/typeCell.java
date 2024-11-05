@@ -14,13 +14,9 @@ import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.java.fase2final_manejo.Main;
-import org.java.fase2final_manejo.controllers.edits.editLineController;
 import org.java.fase2final_manejo.controllers.edits.editTypeController;
-import org.java.fase2final_manejo.models.Linea;
 import org.java.fase2final_manejo.models.Tipo;
 import javafx.collections.ObservableList;
-import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.TipoService;
 import java.io.File;
 import java.io.IOException;
@@ -127,7 +123,7 @@ public class typeCell extends ListCell<Tipo> implements MensajesEmergentes {
     protected void updateItem(Tipo item, boolean empty) {
         super.updateItem(item, empty);
         if (item != null && !empty) {
-            nombre.setText(item.getNombreTipo());
+            nombre.setText(item.getNombre());
             año.setText(item.getAno().toString());
             setGraphic(content);
         } else {

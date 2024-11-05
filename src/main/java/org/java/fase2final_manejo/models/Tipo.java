@@ -1,5 +1,6 @@
 package org.java.fase2final_manejo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Tipo {
@@ -30,6 +31,11 @@ public class Tipo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @JsonIgnore
+    public String getNombre() {
+        return nombreTipo;
     }
 
     public String getNombreTipo() {

@@ -1,5 +1,6 @@
 package org.java.fase2final_manejo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Linea {
@@ -38,6 +39,11 @@ public class Linea {
         return marca;
     }
 
+
+    @JsonIgnore
+    public String getNombre() {
+        return nombreLinea;
+    }
 
     public String getNombreLinea() {
         return nombreLinea;

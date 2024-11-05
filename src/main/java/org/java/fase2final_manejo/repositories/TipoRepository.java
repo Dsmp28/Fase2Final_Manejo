@@ -10,6 +10,6 @@ public class TipoRepository extends GenericRepository<Tipo> {
     }
 
     public List<Tipo> findByNombreTipoContainingIgnoreCase(String nombreTipo) {
-        return null;
+        return searchByName(nombreTipo);
     }
 }

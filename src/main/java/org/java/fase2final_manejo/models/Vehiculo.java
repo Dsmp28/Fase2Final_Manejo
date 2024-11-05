@@ -1,5 +1,6 @@
 package org.java.fase2final_manejo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Vehiculo {
@@ -87,6 +88,11 @@ public class Vehiculo {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    @JsonIgnore
+    public String getNombre() {
+        return placa;
     }
 
     public String getPlaca() {

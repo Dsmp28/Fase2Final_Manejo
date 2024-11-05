@@ -15,16 +15,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 //import org.hibernate.mapping.List;
-import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
-import org.java.fase2final_manejo.controllers.edits.editTypeController;
 import org.java.fase2final_manejo.controllers.edits.editVehicleController;
-import org.java.fase2final_manejo.models.Linea;
-import org.java.fase2final_manejo.models.Marca;
-import org.java.fase2final_manejo.models.Tipo;
 import org.java.fase2final_manejo.models.Vehiculo;
-import org.java.fase2final_manejo.services.BackupService;
-import org.java.fase2final_manejo.services.MarcaService;
 import org.java.fase2final_manejo.services.VehiculoService;
 
 import java.io.File;
@@ -187,10 +180,10 @@ public class vehicleCell extends ListCell<Vehiculo> implements MensajesEmergente
         super.updateItem(item, empty);
         if (item != null && !empty) {
             Marca.setText(item.getMarca().getNombre());
-            Tipo.setText(item.getTipo().getNombreTipo());
-            Linea.setText(item.getLinea().getNombreLinea());
+            Tipo.setText(item.getTipo().getNombre());
+            Linea.setText(item.getLinea().getNombre());
             Modelo.setText(item.getModelo());
-            Placa.setText(item.getPlaca());
+            Placa.setText(item.getNombre());
             Color.setText(item.getColor());
             Motor.setText(item.getMotor());
             Chasis.setText(item.getChasis());

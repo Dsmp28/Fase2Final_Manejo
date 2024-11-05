@@ -11,6 +11,6 @@ public class MarcaRepository extends GenericRepository<Marca>{
     }
 
     public List<Marca> findByNombreContainingIgnoreCase(String nombre) {
-        return null;
+        return searchByName(nombre);
     }
 }

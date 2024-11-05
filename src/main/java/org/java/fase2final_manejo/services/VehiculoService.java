@@ -15,9 +15,6 @@ public class VehiculoService {
     public List<Vehiculo> obtenerTodoslosVehiculos(){
         return vehiculoRepository.findAll();
     }
-    public Optional<Vehiculo> obtenerVehiculoPorId(Long id){
-        return vehiculoRepository.findById(id);
-    }
     public void guardarVehiculo(Vehiculo vehiculo){
         vehiculoRepository.save(vehiculo);
     }

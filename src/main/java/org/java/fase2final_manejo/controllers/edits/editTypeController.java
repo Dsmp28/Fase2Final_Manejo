@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import org.java.fase2final_manejo.models.Tipo;
 import org.java.fase2final_manejo.repositories.TipoRepository;
@@ -70,7 +69,7 @@ public class editTypeController implements Initializable, MensajesEmergentes {
         llenarCampos();
     }
     private void llenarCampos(){
-        txtTipo.setText(tipo.getNombreTipo());
+        txtTipo.setText(tipo.getNombre());
         txtAnio.setText(String.valueOf(tipo.getAno()));
     }
 
