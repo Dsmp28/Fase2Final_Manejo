@@ -17,6 +17,7 @@ import javafx.stage.StageStyle;
 import org.java.fase2final_manejo.controllers.edits.editTypeController;
 import org.java.fase2final_manejo.models.Tipo;
 import javafx.collections.ObservableList;
+import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.TipoService;
 import java.io.File;
 import java.io.IOException;
@@ -95,17 +96,17 @@ public class typeCell extends ListCell<Tipo> implements MensajesEmergentes {
         eliminar.setPrefSize(24, 24);
         eliminar.setCursor(javafx.scene.Cursor.HAND);
 
-        // Agregar el evento de eliminar
-//        eliminar.setOnAction(event -> {
-//            BackupService backupService = Main.context.getBean(BackupService.class);
-//            Tipo item = getItem();  // Obtener el item de la celda actual
-//            if (item != null && mostrarMensajeConfirmacion("Eliminar tipo", "¿Estás seguro de eliminar el tipo de nombre: " + item.getNombreTipo() + "?", "Esta acción no se puede deshacer")) {
-//                tipoService.eliminarTipo(item.getId());  // Eliminar el item de la base de datos
-//                items.remove(item);  // Eliminar el item de la lista
-//                backupService.generateBackupInBackground();
-//                mostrarMensajeExito();
-//            }
-//        });
+        //Agregar el evento de eliminar
+        eliminar.setOnAction(event -> {
+            //BackupService backupService = Main.context.getBean(BackupService.class);
+            Tipo item = getItem();  // Obtener el item de la celda actual
+            if (item != null && mostrarMensajeConfirmacion("Eliminar tipo", "¿Estás seguro de eliminar el tipo de nombre: " + item.getNombreTipo() + "?", "Esta acción no se puede deshacer")) {
+                tipoService.eliminarTipo(item.getId());  // Eliminar el item de la base de datos
+                items.remove(item);  // Eliminar el item de la lista
+                //backupService.generateBackupInBackground();
+                mostrarMensajeExito();
+            }
+        });
 
         HBox hBox = new HBox(editar, eliminar);
         hBox.setPrefWidth(223);
