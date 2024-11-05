@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.java.fase2final_manejo.models.Linea;
+import org.java.fase2final_manejo.models.Marca;
+import org.java.fase2final_manejo.models.Tipo;
+import org.java.fase2final_manejo.models.Vehiculo;
 import org.java.fase2final_manejo.repositories.LineaRepository;
 import org.java.fase2final_manejo.repositories.MarcaRepository;
 import org.java.fase2final_manejo.repositories.TipoRepository;
@@ -21,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class homeController implements Initializable, MensajesEmergentes {
@@ -62,6 +66,11 @@ public class homeController implements Initializable, MensajesEmergentes {
         lineaService = new LineaService(new LineaRepository(dataLineaPath, indexLineaPath));
         vehiculoService = new VehiculoService(new VehiculoRepository(dataVehiculoPath, indexVehiculoPath));
         tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
+
+        Linea.contadorId = lineaService.contarLineas();
+        Marca.contadorId = marcaService.contarMarcas();
+        Tipo.contadorId = tipoService.contarTipos();
+        Vehiculo.contadorId = vehiculoService.contarVehiculos();
         llenarLabels();
     }
 
