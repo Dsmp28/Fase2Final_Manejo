@@ -98,9 +98,13 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
             // Verificar si ya existe un vehículo con los mismos valores
             List<Vehiculo> vehiculosTotales = vehiculoService.obtenerTodoslosVehiculos();
             for (Vehiculo vehiculo : vehiculosTotales) {
-                if (vehiculo.getPlaca().equalsIgnoreCase(txtPlaca.getText()) || vehiculo.getChasis().equalsIgnoreCase(txtChasis.getText()) || vehiculo.getMotor().equalsIgnoreCase(txtMotor.getText()) || vehiculo.getVin().equalsIgnoreCase(txtVin.getText()) && !vehiculo.getId().equals(this.vehiculo.getId())) {
-                    mostrarMensajeError("Ya existe un vehículo con la placa ingresada.");
-                    return;
+                long val = this.vehiculo.getId();
+                long val2 = vehiculo.getId();
+                if (val != val2){
+                    if (vehiculo.getPlaca().equalsIgnoreCase(txtPlaca.getText()) || vehiculo.getChasis().equalsIgnoreCase(txtChasis.getText()) || vehiculo.getMotor().equalsIgnoreCase(txtMotor.getText()) || vehiculo.getVin().equalsIgnoreCase(txtVin.getText())) {
+                        mostrarMensajeError("Ya existe un vehículo con la placa ingresada.");
+                        return;
+                    }
                 }
             }
             vehiculo.setModelo(txtModelo.getText());
