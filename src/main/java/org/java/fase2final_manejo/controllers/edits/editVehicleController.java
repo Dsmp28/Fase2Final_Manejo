@@ -131,6 +131,7 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
         cbMarca.setValue(vehiculo.getMarca());
         cbTipo.setValue(vehiculo.getTipo());
         cbLinea.setValue(vehiculo.getLinea());
+        cargarLineas();
     }
     private void cargarMarcas(){
         cbMarca.getItems().addAll(marcaService.obtenerTodasLasMarcas());
@@ -139,6 +140,7 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
     public void cargarTipos(){
         cbTipo.getItems().addAll(tipoService.obtenerTodoslosTipos());
     }
+
     @FXML
     private void cargarLineas() {
         cbLinea.getItems().clear();
