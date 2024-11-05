@@ -36,7 +36,6 @@ public class Marca {
     public Marca(){
 
     }
-
     public Long getId() {
         return id;
     }
