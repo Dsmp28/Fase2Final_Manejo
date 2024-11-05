@@ -49,8 +49,7 @@ public class vehicleController implements Initializable {
     @FXML
     private ListView lvVehiculo;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resourceBundle) {
+    private void sets(){
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";
@@ -64,6 +63,11 @@ public class vehicleController implements Initializable {
         lineaService = new LineaService(new LineaRepository(dataLineaPath, indexLineaPath));
         vehicleService = new VehiculoService(new VehiculoRepository(dataVehiculoPath, indexVehiculoPath));
         tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resourceBundle) {
+        sets();
         cargarVehiculos();
     }
 
@@ -101,6 +105,7 @@ public class vehicleController implements Initializable {
     }
 
     public void cargarVehiculos(){
+        sets();
         List<Vehiculo> vehiculos = vehicleService.obtenerTodoslosVehiculos();
         ObservableList<Vehiculo> vehiculosObservable = FXCollections.observableArrayList(vehiculos);
         lvVehiculo.setItems(vehiculosObservable);

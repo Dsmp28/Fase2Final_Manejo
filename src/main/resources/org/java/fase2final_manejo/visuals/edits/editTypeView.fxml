@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.geometry.Insets?>
-<Pane xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.java.fase2final_manejo.controllers.edits.editTypeController"
-      stylesheets="@../../stylesheets/typeStyle.css"
-      prefHeight="225.0" prefWidth="300.0">
+<Pane prefHeight="225.0" prefWidth="300.0" stylesheets="@../../stylesheets/typeStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.java.fase2final_manejo.controllers.edits.editTypeController">
     <children>
         <Pane layoutX="15.0" layoutY="15.0" prefHeight="195.0" prefWidth="270.0" styleClass="mainPane">
             <children>
@@ -50,7 +43,7 @@
                         <TextField fx:id="txtAnio" promptText="Año" />
                     </children>
                 </VBox>
-                <Button fx:id="btnAñadir" layoutX="104.0" layoutY="157.0" mnemonicParsing="false" onAction="#editarTipo" styleClass="btnNuevo" text="Editar">
+                <Button fx:id="btnAñadir" layoutX="72.0" layoutY="157.0" mnemonicParsing="false" onAction="#editarTipo" styleClass="btnNuevo" text="Guardar cambios">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

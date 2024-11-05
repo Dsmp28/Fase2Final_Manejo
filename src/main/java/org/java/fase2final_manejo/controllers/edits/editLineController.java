@@ -48,6 +48,7 @@ public class editLineController implements Initializable, MensajesEmergentes {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lineController = new org.java.fase2final_manejo.controllers.lineController();
         //backupService = Main.context.getBean(BackupService.class);
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
@@ -82,7 +83,7 @@ public class editLineController implements Initializable, MensajesEmergentes {
             mostrarMensajeExito();
             cerrar();
         }catch (Exception e){
-            //Excepción
+            mostrarMensajeError(e.getMessage());
         }
     }
 

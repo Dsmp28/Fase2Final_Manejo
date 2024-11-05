@@ -1,1 +1,11 @@
-[]
+[ {
+  "id" : 0,
+  "nombre" : "holaahh",
+  "fechaCreacion" : [ 2024, 11, 8 ],
+  "fundador" : "asdafa"
+}, {
+  "id" : 1,
+  "nombre" : "asda",
+  "fechaCreacion" : [ 2024, 11, 7 ],
+  "fundador" : "55"
+} ]

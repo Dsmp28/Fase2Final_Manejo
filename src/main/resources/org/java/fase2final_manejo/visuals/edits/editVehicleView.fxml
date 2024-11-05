@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.geometry.Insets?>
-<Pane xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.java.fase2final_manejo.controllers.edits.editVehicleController"
-      stylesheets="@../../stylesheets/vehicleStyle.css"
-      prefHeight="395.0" prefWidth="600.0">
+<Pane prefHeight="395.0" prefWidth="600.0" stylesheets="@../../stylesheets/vehicleStyle.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.java.fase2final_manejo.controllers.edits.editVehicleController">
     <children>
         <Pane layoutX="15.0" layoutY="15.0" prefHeight="365.0" prefWidth="570.0" styleClass="mainPane">
             <children>
@@ -83,7 +76,7 @@
                         </VBox>
                     </children>
                 </HBox>
-                <Button fx:id="btnAñadir" layoutX="255.0" layoutY="321.0" mnemonicParsing="false" onAction="#editarVehiculo" styleClass="btnNuevo" text="Editar">
+                <Button fx:id="btnAñadir" layoutX="222.0" layoutY="321.0" mnemonicParsing="false" onAction="#editarVehiculo" styleClass="btnNuevo" text="Guardar cambios">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

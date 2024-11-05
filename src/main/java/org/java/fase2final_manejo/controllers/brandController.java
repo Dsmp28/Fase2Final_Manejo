@@ -33,7 +33,7 @@ public class brandController implements Initializable {
     @FXML
     private TextField txtBuscarMarca;
     @FXML
-    private ListView lvMarca;
+    public ListView lvMarca = new ListView<Marca>();
 
 
 
@@ -78,10 +78,13 @@ public class brandController implements Initializable {
     }
 
     public void cargarMarcas(){
+        lvMarca.getItems().clear();
+        marcaService = new MarcaService(new MarcaRepository("src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json", "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt"));
         List<Marca> marcas = marcaService.obtenerTodasLasMarcas();
         ObservableList<Marca> listaMarcas = FXCollections.observableArrayList(marcas);
         lvMarca.setItems(listaMarcas);
         lvMarca.setCellFactory(brandCell -> new brandCell(listaMarcas, marcaService));
+        lvMarca.refresh();
     }
 
 }

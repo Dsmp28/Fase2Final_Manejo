@@ -109,6 +109,7 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
         tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
         cargarMarcas();
         cargarTipos();
+        //cargarLineas();
     }
     private void cargarMarcas(){
         cbMarca.getItems().addAll(marcaService.obtenerTodasLasMarcas());
