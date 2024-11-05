@@ -1,31 +1,47 @@
 package org.java.fase2final_manejo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Vehiculo {
 
+    public static long contadorId = 0;
+
+    @JsonProperty("id")
     private Long id;
 
+    @JsonProperty("marca")
     private Marca marca;
 
+    @JsonProperty("modelo")
     private String modelo;
 
+    @JsonProperty("color")
     private String color;
 
+    @JsonProperty("placa")
     private String placa;
 
+    @JsonProperty("chasis")
     private String chasis;
 
+    @JsonProperty("motor")
     private String motor;
 
+    @JsonProperty("vin")
     private String vin;
 
+    @JsonProperty("asientos")
     private Integer asientos;
 
+    @JsonProperty("tipo")
     private Tipo tipo;
 
+    @JsonProperty("linea")
     private Linea linea;
 
 
     public Vehiculo (Marca marca, String modelo, String color, String placa, String chasis, String motor, String vin, Integer asientos, Tipo tipo, Linea linea){
+        this.id = contadorId++;
         this.marca = marca;
         this.modelo = modelo;
         this.color = color;
@@ -36,6 +52,9 @@ public class Vehiculo {
         this.asientos = asientos;
         this.tipo = tipo;
         this.linea = linea;
+    }
+
+    public Vehiculo(){
     }
 
     public Long getId() {

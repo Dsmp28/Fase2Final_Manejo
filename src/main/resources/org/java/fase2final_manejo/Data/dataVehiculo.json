@@ -1,0 +1,993 @@
+{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 0,
+  "marca" : {
+    "id" : 0,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 1937, 8, 28 ],
+    "fundador" : "Kiichiro Toyoda"
+  },
+  "modelo" : "Corolla SE",
+  "color" : "Negro",
+  "placa" : "123ABC",
+  "chasis" : "CHS123456",
+  "motor" : "MT456",
+  "vin" : "VIN123456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 0,
+    "nombreTipo" : "Sedan",
+    "ano" : 2020
+  },
+  "linea" : {
+    "id" : 0,
+    "marca" : {
+      "id" : 0,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 1937, 8, 28 ],
+      "fundador" : "Kiichiro Toyoda"
+    },
+    "nombreLinea" : "Corolla",
+    "ano" : 2020
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}{
+  "id" : 1,
+  "marca" : {
+    "id" : 1,
+    "nombre" : "Ford",
+    "fechaCreacion" : [ 1903, 6, 16 ],
+    "fundador" : "Henry Ford"
+  },
+  "modelo" : "F-150 XL",
+  "color" : "Blanco",
+  "placa" : "789XYZ",
+  "chasis" : "CHS789456",
+  "motor" : "MT789",
+  "vin" : "VIN789456",
+  "asientos" : 5,
+  "tipo" : {
+    "id" : 1,
+    "nombreTipo" : "Truck",
+    "ano" : 2021
+  },
+  "linea" : {
+    "id" : 1,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Ford",
+      "fechaCreacion" : [ 1903, 6, 16 ],
+      "fundador" : "Henry Ford"
+    },
+    "nombreLinea" : "F-150",
+    "ano" : 2021
+  }
+}

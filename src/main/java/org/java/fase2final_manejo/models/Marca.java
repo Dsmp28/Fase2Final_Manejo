@@ -1,16 +1,24 @@
 package org.java.fase2final_manejo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
 
 public class Marca {
 
+    public static long contadorId = 0;
+
+    @JsonProperty("id")
     private Long id;
 
+    @JsonProperty("nombre")
     private String nombre;
 
+    @JsonProperty("fechaCreacion")
     private LocalDate fechaCreacion;
 
+    @JsonProperty("fundador")
     private String fundador;
 
     @Override
@@ -19,9 +27,14 @@ public class Marca {
     }
 
     public Marca (String nombre, LocalDate fechaCreacion, String fundador){
+        this.id = contadorId++;
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
         this.fundador = fundador;
+    }
+
+    public Marca(){
+
     }
 
     public Long getId() {

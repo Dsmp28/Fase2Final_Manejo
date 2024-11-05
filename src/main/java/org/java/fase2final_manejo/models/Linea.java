@@ -1,59 +1,66 @@
 package org.java.fase2final_manejo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Linea {
 
-    public Linea (Marca marca, String nombreLinea, Integer ano){
+    public static long contadorId = 0;
+
+    @JsonProperty("id")
+    private Long id;
+
+    @JsonProperty("marca")
+    private Marca marca;
+
+    @JsonProperty("nombreLinea")
+    private String nombreLinea;
+
+    @JsonProperty("ano")
+    private Integer ano;
+
+    public Linea(Marca marca, String nombreLinea, Integer ano) {
+        this.id = contadorId++;
         this.marca = marca;
         this.nombreLinea = nombreLinea;
         this.ano = ano;
     }
 
-    private Long id;
+    public Linea(){
 
-    private Marca marca;
-
-    private String nombreLinea;
-
-    private Integer ano;
-
-    @Override
-    public String toString() {
-        return nombreLinea;
-    }
-
-    public String getNombreMarca() {
-        return marca.getNombre();
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Marca getMarca() {
         return marca;
     }
 
-    public void setMarca(Marca marca) {
-        this.marca = marca;
-    }
 
     public String getNombreLinea() {
         return nombreLinea;
-    }
-
-    public void setNombreLinea(String nombreLinea) {
-        this.nombreLinea = nombreLinea;
     }
 
     public Integer getAno() {
         return ano;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
+
+    public void setNombreLinea(String nombreLinea) {
+        this.nombreLinea = nombreLinea;
+    }
+
     public void setAno(Integer ano) {
         this.ano = ano;
     }
 }
+
