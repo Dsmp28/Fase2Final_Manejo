@@ -1,0 +1,9 @@
+{
+  "id" : 0,
+  "nombreTipo" : "Sedan",
+  "ano" : 2020
+}{
+  "id" : 1,
+  "nombreTipo" : "Truck",
+  "ano" : 2021
+}
