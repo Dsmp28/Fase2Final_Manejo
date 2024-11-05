@@ -47,7 +47,7 @@ public class vehicleController implements Initializable {
     @FXML
     private TextField txtBuscarNombre;
     @FXML
-    private ListView lvVehiculo;
+    private ListView lvVehiculo = new ListView<Vehiculo>();
 
     private void sets(){
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
