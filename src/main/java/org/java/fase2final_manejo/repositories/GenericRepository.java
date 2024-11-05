@@ -277,10 +277,108 @@ public class GenericRepository<T> {
         }
     }
 
+    public void deleteById(Long id) {
+        List<T> entities = findAll(); // Cargar todos los datos existentes del tipo actual
+        boolean found = false;
 
-    public void deleteById(Long id){
+        // Eliminar el objeto del archivo JSON si coincide el ID
+        Iterator<T> iterator = entities.iterator();
+        while (iterator.hasNext()) {
+            T entity = iterator.next();
+            if (getId(entity).equals(id)) {
+                iterator.remove();
+                found = true;
+                break;
+            }
+        }
 
+        if (!found) {
+            System.out.println("No se encontró el objeto con el ID proporcionado.");
+            return;
+        }
+
+        // Guardar el archivo de datos principal actualizado
+        try {
+            objectMapper.writeValue(new File(dataFilePath), entities);
+            saveIndex(entities); // Actualizar el archivo de índice principal
+        } catch (IOException e) {
+            System.out.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+
+        // Borrar en cascada si es necesario para dependencias relacionadas
+        if (clazz.equals(Marca.class)) {
+            cascadeDeleteForMarca(id);
+        } else if (clazz.equals(Linea.class)) {
+            cascadeDeleteForLinea(id);
+        } else if (clazz.equals(Tipo.class)) {
+            cascadeDeleteForTipo(id);
+        }
     }
+
+    // Eliminación en cascada para Marca
+    private void cascadeDeleteForMarca(Long marcaId) {
+        try {
+            // Eliminar dependencias en Linea
+            File fileLinea = new File("src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json");
+            List<Linea> lineas = objectMapper.readValue(fileLinea,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Linea.class));
+
+            lineas.removeIf(linea -> linea.getMarca().getId().equals(marcaId));
+
+            objectMapper.writeValue(fileLinea, lineas);
+            saveIndexCascade((List<T>) lineas, "src/main/resources/org/java/fase2final_manejo/Data/indexLinea.txt");
+
+            // Eliminar dependencias en Vehiculo
+            File fileVehiculo = new File("src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json");
+            List<Vehiculo> vehiculos = objectMapper.readValue(fileVehiculo,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Vehiculo.class));
+
+            vehiculos.removeIf(vehiculo -> vehiculo.getMarca().getId().equals(marcaId));
+
+            objectMapper.writeValue(fileVehiculo, vehiculos);
+            saveIndexCascade((List<T>) vehiculos, "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt");
+
+        } catch (IOException e) {
+            System.out.println("Error al eliminar dependencias para Marca: " + e.getMessage());
+        }
+    }
+
+    // Eliminación en cascada para Linea
+    private void cascadeDeleteForLinea(Long lineaId) {
+        try {
+            // Eliminar dependencias en Vehiculo
+            File fileVehiculo = new File("src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json");
+            List<Vehiculo> vehiculos = objectMapper.readValue(fileVehiculo,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Vehiculo.class));
+
+            vehiculos.removeIf(vehiculo -> vehiculo.getLinea().getId().equals(lineaId));
+
+            objectMapper.writeValue(fileVehiculo, vehiculos);
+            saveIndexCascade((List<T>) vehiculos, "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt");
+
+        } catch (IOException e) {
+            System.out.println("Error al eliminar dependencias para Linea: " + e.getMessage());
+        }
+    }
+
+    // Eliminación en cascada para Tipo
+    private void cascadeDeleteForTipo(Long tipoId) {
+        try {
+            // Eliminar dependencias en Vehiculo
+            File fileVehiculo = new File("src/main/resources/org/java/fase2final_manejo/Data/dataVehiculo.json");
+            List<Vehiculo> vehiculos = objectMapper.readValue(fileVehiculo,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Vehiculo.class));
+
+            vehiculos.removeIf(vehiculo -> vehiculo.getTipo().getId().equals(tipoId));
+
+            objectMapper.writeValue(fileVehiculo, vehiculos);
+            saveIndexCascade((List<T>) vehiculos, "src/main/resources/org/java/fase2final_manejo/Data/indexVehiculo.txt");
+
+        } catch (IOException e) {
+            System.out.println("Error al eliminar dependencias para Tipo: " + e.getMessage());
+        }
+    }
+
 
     public long count(){
         return findAll().size();
