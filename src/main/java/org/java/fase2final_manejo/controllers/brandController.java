@@ -77,7 +77,7 @@ public class brandController implements Initializable {
         lvMarca.setCellFactory(brandCell -> new brandCell(listaMarcas, marcaService));
     }
 
-    private void cargarMarcas(){
+    public void cargarMarcas(){
         List<Marca> marcas = marcaService.obtenerTodasLasMarcas();
         ObservableList<Marca> listaMarcas = FXCollections.observableArrayList(marcas);
         lvMarca.setItems(listaMarcas);

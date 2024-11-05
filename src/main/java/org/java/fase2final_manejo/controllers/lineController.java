@@ -86,7 +86,7 @@ public class lineController implements Initializable {
         }
     }
 
-    private void cargarLineas(){
+    public void cargarLineas(){
         List<Linea> lineas = lineaService.obtenerTodoslasLineas();
 
         ObservableList<Linea> observableList = FXCollections.observableArrayList(lineas);

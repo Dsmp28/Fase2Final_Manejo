@@ -2,6 +2,7 @@ package org.java.fase2final_manejo.controllers.edits;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -36,6 +37,7 @@ public class editBrandController implements Initializable, MensajesEmergentes {
 
     private Marca marca;
     private BackupService backupService;
+    private org.java.fase2final_manejo.controllers.brandController brandController;
 
     @FXML
     private void cerrar(){
@@ -61,15 +63,34 @@ public class editBrandController implements Initializable, MensajesEmergentes {
     }
     @FXML
     private void editarMarca(){
-//        try {
-//            //Código para editar una marca
-//            backupService.generateBackup(); //Esto genera el backup. Al hacer el editar agregarlo antes de mostrar el mensaje de que se edito con exito
-//        } catch (Exception e) {
-//            //Excepción
-//        }
+        try {
+            if (txtMarca.getText().isEmpty() || txtFundador.getText().isEmpty() || dpFecha.getValue() == null) {
+                mostrarMensajeEmergente(Alert.AlertType.ERROR, "Error", "Campos vacios", "Por favor llene todos los campos");
+                return;
+            }
+            marca.setNombre(txtMarca.getText());
+            marca.setFundador(txtFundador.getText());
+            marca.setFechaCreacion(dpFecha.getValue());
+            marcaService.guardarMarca(marca);
+            //backupService.generateBackupInBackground();
+            brandController.cargarMarcas();
+            mostrarMensajeExito();
+            cerrar();
+        } catch (Exception e) {
+            mostrarMensajeError(e.getMessage());
+        }
     }
 
     public void setStage(Stage emergente) {
         this.stage = emergente;
+    }
+    private void mostrarMensajeError(String mensaje){
+        String mensajeFormateado = String.format("No se pudo editar la marca, por favor revise los datos\nError: %s", mensaje);
+
+        mostrarMensajeEmergente(Alert.AlertType.ERROR, "Error", "Error al editar", mensajeFormateado);
+    }
+
+    private void mostrarMensajeExito(){
+        mostrarMensajeEmergente(Alert.AlertType.INFORMATION, "Exito", "Marca editada", "La marca se edito correctamente");
     }
 }
