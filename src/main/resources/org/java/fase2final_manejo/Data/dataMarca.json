@@ -1,11 +1,1 @@
-[ {
-  "id" : 0,
-  "nombre" : "asadaa56",
-  "fechaCreacion" : [ 2024, 11, 7 ],
-  "fundador" : "4"
-}, {
-  "id" : 1,
-  "nombre" : "toyota",
-  "fechaCreacion" : [ 2024, 11, 2 ],
-  "fundador" : "hola"
-} ]
+[ ]

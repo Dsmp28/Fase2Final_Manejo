@@ -111,16 +111,16 @@ public class brandCell extends ListCell<Marca> implements MensajesEmergentes {
         eliminar.setCursor(javafx.scene.Cursor.HAND);
 
         eliminar.setOnAction(event -> {
-            //BackupService backupService = Main.context.getBean(BackupService.class);
+            BackupService backupService = new BackupService();
             Marca item = getItem();
             if (item != null && mostrarMensajeConfirmacion("Eliminar marca", "¿Estás seguro de eliminar la marca de nombre: " + item.getNombre() + "?", "Esta acción no se puede deshacer")) {
                 items.remove(item);
                 marcaService.eliminarMarca(item.getId());
-//                try {
-//                    backupService.generateBackup();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
+                try {
+                    backupService.generateBackup();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 mostrarMensajeExito();
             }
         });

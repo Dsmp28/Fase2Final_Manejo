@@ -84,17 +84,19 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
                 throw new Exception("Todos los campos son obligatorios");
             }
 
-            // Verificar si ya existe un vehículo con la misma placa
-            List<Vehiculo> vehiculosExistentes = vehiculoService.buscarVehiculoPorPlaca(placa);
-            if (!vehiculosExistentes.isEmpty()) {
-                mostrarMensajeError("Ya existe un vehículo con la placa ingresada.");
-                return;
+            // Verificar si ya existe un vehículo con los mismos valores
+            List<Vehiculo> vehiculosTotales = vehiculoService.obtenerTodoslosVehiculos();
+            for (Vehiculo vehiculo : vehiculosTotales) {
+                if (vehiculo.getPlaca().equalsIgnoreCase(txtPlaca.getText()) || vehiculo.getChasis().equalsIgnoreCase(txtChasis.getText()) || vehiculo.getMotor().equalsIgnoreCase(txtMotor.getText()) || vehiculo.getVin().equalsIgnoreCase(txtVin.getText())) {
+                    mostrarMensajeError("Ya existe un vehículo con la placa ingresada.");
+                    return;
+                }
             }
 
             // Crear y guardar el nuevo vehículo
             Vehiculo vehiculo = new Vehiculo(marca, modelo, color, placa, chasis, motor, vin, numAsientos, tipo, linea);
             vehiculoService.guardarVehiculo(vehiculo);
-//            backupService.generateBackupInBackground();
+            backupService.generateBackupInBackground();
 
             // Mostrar mensaje de éxito y cerrar
             mostrarMensajeExito();
@@ -107,7 +109,7 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";
@@ -134,9 +136,12 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
     }
     @FXML
     private void cargarLineas() {
-        if(cbMarca.getValue() == null) {
-            return;
+        // Asegúrate de que hay una marca seleccionada antes de cargar las líneas
+        if (cbMarca.getValue() == null) {
+            cbLinea.getItems().clear(); // Limpia las líneas si no hay marca seleccionada
+            return; // Sal del método si no hay marca seleccionada
         }
+
         cbLinea.getItems().clear();
         List<Linea> lineas = lineaService.obtenerLineaPorMarca(cbMarca.getValue().getId())
                 .stream()
@@ -160,6 +165,8 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
             }
         });
     }
+
+
 
 
     private void mostrarMensajeError(String mensaje){

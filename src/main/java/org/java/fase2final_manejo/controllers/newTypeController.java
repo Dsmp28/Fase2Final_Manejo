@@ -50,17 +50,18 @@ public class newTypeController implements Initializable, MensajesEmergentes {
                 throw new Exception("Todos los campos son obligatorios");
             }
 
-            // Verificar si ya existe un tipo con el mismo nombre
-            List<Tipo> tiposExistentes = tipoService.buscarTipoPorNombre(nombreTipo);
-            if (!tiposExistentes.isEmpty()) {
-                mostrarMensajeError("Ya existe un tipo con el nombre ingresado.");
-                return;
+            // Verificar si ya existe un tipo con el mismo nombre y diferente ID
+            List<Tipo> tiposExistentes = tipoService.buscarTipoPorNombre(txtTipo.getText());
+            for (Tipo tipoExistente : tiposExistentes) {
+                if (tipoExistente.getNombreTipo().equalsIgnoreCase(txtTipo.getText())) {
+                    mostrarMensajeError("Ya existe un tipo con el nombre ingresado.");
+                    return;
+                }
             }
 
             Tipo nuevoTipo = new Tipo(nombreTipo, anio);
             tipoService.guardarTipo(nuevoTipo);
-            //            backupService.generateBackup();
-//            backupService.generateBackupInBackground();
+            backupService.generateBackup();
             mostrarMensajeExito();
             cerrar();
         } catch (Exception e) {
@@ -71,7 +72,7 @@ public class newTypeController implements Initializable, MensajesEmergentes {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json";
         String indexTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt";
 

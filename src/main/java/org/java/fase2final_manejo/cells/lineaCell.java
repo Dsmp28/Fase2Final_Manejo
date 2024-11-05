@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.java.fase2final_manejo.controllers.edits.editLineController;
 import org.java.fase2final_manejo.models.Linea;
+import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.LineaService;
 import java.io.File;
 import java.io.IOException;
@@ -98,16 +99,16 @@ public class lineaCell extends ListCell<Linea> implements MensajesEmergentes {
 
         // Agregar el evento de eliminar
         eliminar.setOnAction(event -> {
-            //BackupService backupService = Main.context.getBean(BackupService.class);
+            BackupService backupService = new BackupService();
             Linea item = getItem();
             if (item != null && mostrarMensajeConfirmacion("Eliminar línea", "¿Estás seguro de eliminar la línea: " + item.getNombre() + "?", "Esta acción no se puede deshacer")) {
                 items.remove(item);
                 lineaService.eliminarLinea(item.getId());
-//                try {
-//                    backupService.generateBackup();
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
+                try {
+                    backupService.generateBackup();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 mostrarMensajeExito();
             }
         });

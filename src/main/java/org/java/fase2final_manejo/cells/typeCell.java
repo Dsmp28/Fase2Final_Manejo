@@ -96,14 +96,14 @@ public class typeCell extends ListCell<Tipo> implements MensajesEmergentes {
         eliminar.setPrefSize(24, 24);
         eliminar.setCursor(javafx.scene.Cursor.HAND);
 
-        //Agregar el evento de eliminar
+        // Agregar el evento de eliminar
         eliminar.setOnAction(event -> {
-            //BackupService backupService = Main.context.getBean(BackupService.class);
+            BackupService backupService = new BackupService();
             Tipo item = getItem();  // Obtener el item de la celda actual
             if (item != null && mostrarMensajeConfirmacion("Eliminar tipo", "¿Estás seguro de eliminar el tipo de nombre: " + item.getNombreTipo() + "?", "Esta acción no se puede deshacer")) {
                 tipoService.eliminarTipo(item.getId());  // Eliminar el item de la base de datos
                 items.remove(item);  // Eliminar el item de la lista
-                //backupService.generateBackupInBackground();
+                backupService.generateBackupInBackground();
                 mostrarMensajeExito();
             }
         });

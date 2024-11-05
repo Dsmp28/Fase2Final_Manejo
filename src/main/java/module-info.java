@@ -7,6 +7,8 @@ module org.java.fase2final_manejo {
     requires org.kordamp.bootstrapfx.core;
     requires com.fasterxml.jackson.databind;
     requires com.fasterxml.jackson.datatype.jsr310;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens org.java.fase2final_manejo to javafx.fxml;
     opens org.java.fase2final_manejo.controllers to javafx.fxml;

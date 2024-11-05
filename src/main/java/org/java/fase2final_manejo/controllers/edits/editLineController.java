@@ -17,6 +17,7 @@ import org.java.fase2final_manejo.services.LineaService;
 import org.java.fase2final_manejo.services.MarcaService;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class editLineController implements Initializable, MensajesEmergentes {
@@ -49,7 +50,7 @@ public class editLineController implements Initializable, MensajesEmergentes {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lineController = new org.java.fase2final_manejo.controllers.lineController();
-        //backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));
@@ -74,11 +75,20 @@ public class editLineController implements Initializable, MensajesEmergentes {
                 mostrarMensajeError("Todos los campos son obligatorios");
                 return;
             }
+            // Verificar si ya existe una línea con el mismo nombre y diferente ID
+            List<Linea> lineasExistentes = lineaService.buscarLineaPorNombre(txtLinea.getText());
+            for (Linea lineaExistente : lineasExistentes) {
+                if (!lineaExistente.getId().equals(linea.getId()) && lineaExistente.getNombreLinea().equalsIgnoreCase(txtLinea.getText())) {
+                    mostrarMensajeError("Ya existe una línea con el nombre ingresado.");
+                    return;
+                }
+            }
+
             linea.setMarca(cbMarca.getValue());
             linea.setNombreLinea(txtLinea.getText());
             linea.setAno(Integer.parseInt(txtAnio.getText()));
             lineaService.guardarLinea(linea);
-            //backupService.generateBackupInBackground();
+            backupService.generateBackupInBackground();
             lineController.cargarLineas();
             mostrarMensajeExito();
             cerrar();

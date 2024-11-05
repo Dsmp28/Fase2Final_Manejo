@@ -73,7 +73,7 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         vehicleController = new org.java.fase2final_manejo.controllers.vehicleController();
-//        backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
         String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
         String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";
@@ -95,6 +95,14 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
                 mostrarMensajeError("Todos los campos son obligatorios");
                 return;
             }
+            // Verificar si ya existe un vehículo con los mismos valores
+            List<Vehiculo> vehiculosTotales = vehiculoService.obtenerTodoslosVehiculos();
+            for (Vehiculo vehiculo : vehiculosTotales) {
+                if (vehiculo.getPlaca().equalsIgnoreCase(txtPlaca.getText()) || vehiculo.getChasis().equalsIgnoreCase(txtChasis.getText()) || vehiculo.getMotor().equalsIgnoreCase(txtMotor.getText()) || vehiculo.getVin().equalsIgnoreCase(txtVin.getText()) && !vehiculo.getId().equals(this.vehiculo.getId())) {
+                    mostrarMensajeError("Ya existe un vehículo con la placa ingresada.");
+                    return;
+                }
+            }
             vehiculo.setModelo(txtModelo.getText());
             vehiculo.setColor(txtColor.getText());
             vehiculo.setPlaca(txtPlaca.getText());
@@ -105,7 +113,7 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
             vehiculo.setMarca(cbMarca.getValue());
             vehiculo.setTipo(cbTipo.getValue());
             vehiculoService.guardarVehiculo(vehiculo);
-//            backupService.generateBackupInBackground(); //Esto genera el backup. Al hacer el editar agregarlo antes de mostrar el mensaje de que se edito con exito
+            backupService.generateBackupInBackground(); //Esto genera el backup. Al hacer el editar agregarlo antes de mostrar el mensaje de que se edito con exito
             vehicleController.cargarVehiculos();
             mostrarMensajeExito();
             cerrar();
@@ -143,6 +151,12 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
 
     @FXML
     private void cargarLineas() {
+        // Asegúrate de que hay una marca seleccionada antes de cargar las líneas
+        if (cbMarca.getValue() == null) {
+            cbLinea.getItems().clear(); // Limpia las líneas si no hay marca seleccionada
+            return; // Sal del método si no hay marca seleccionada
+        }
+
         cbLinea.getItems().clear();
         List<Linea> lineas = lineaService.obtenerLineaPorMarca(cbMarca.getValue().getId())
                 .stream()
@@ -166,6 +180,8 @@ public class editVehicleController implements Initializable, MensajesEmergentes 
             }
         });
     }
+
+
 
 
     private void mostrarMensajeError(String mensaje){

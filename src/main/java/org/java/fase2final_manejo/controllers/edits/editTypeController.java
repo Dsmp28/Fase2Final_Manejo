@@ -15,6 +15,7 @@ import org.java.fase2final_manejo.services.TipoService;
 
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class editTypeController implements Initializable, MensajesEmergentes {
@@ -42,7 +43,7 @@ public class editTypeController implements Initializable, MensajesEmergentes {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         typeController = new org.java.fase2final_manejo.controllers.typeController();
-//        backupService = Main.context.getBean(BackupService.class);
+        backupService = new BackupService();
         String dataTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json";
         String indexTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt";
         tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
@@ -55,10 +56,19 @@ public class editTypeController implements Initializable, MensajesEmergentes {
                 mostrarMensajeError("Todos los campos son obligatorios");
                 return;
             }
+            // Verificar si ya existe un tipo con el mismo nombre y diferente ID
+            List<Tipo> tiposExistentes = tipoService.buscarTipoPorNombre(txtTipo.getText());
+            for (Tipo tipoExistente : tiposExistentes) {
+                if (!tipoExistente.getId().equals(tipo.getId()) && tipoExistente.getNombreTipo().equalsIgnoreCase(txtTipo.getText())) {
+                    mostrarMensajeError("Ya existe un tipo con el nombre ingresado.");
+                    return;
+                }
+            }
+
             tipo.setNombreTipo(txtTipo.getText());
             tipo.setAno(Integer.parseInt(txtAnio.getText()));
             tipoService.guardarTipo(tipo);
-//            backupService.generateBackupInBackground(); //Esto genera el backup. Al hacer el editar agregarlo antes de mostrar el mensaje de que se edito con exito
+            backupService.generateBackupInBackground(); //Esto genera el backup. Al hacer el editar agregarlo antes de mostrar el mensaje de que se edito con exito
             typeController.cargarTipos();
             mostrarMensajeExito();
             cerrar();

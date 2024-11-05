@@ -1,10 +1,19 @@
 package org.java.fase2final_manejo.controllers;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.java.fase2final_manejo.models.Linea;
 import org.java.fase2final_manejo.models.Marca;
 import org.java.fase2final_manejo.models.Tipo;
@@ -20,11 +29,15 @@ import org.java.fase2final_manejo.services.VehiculoService;
 
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class homeController implements Initializable, MensajesEmergentes {
@@ -83,34 +96,97 @@ public class homeController implements Initializable, MensajesEmergentes {
 
     @FXML
     private void exportar() {
-        // Crear el FileChooser
-        FileChooser fileChooser = new FileChooser();
+        // Crear el FileChooser para seleccionar la ubicación de la carpeta
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Selecciona dónde guardar la carpeta con archivos CSV");
 
-        // Configurar el título de la ventana
-        fileChooser.setTitle("Selecciona dónde guardar el archivo");
+        // Mostrar el diálogo de selección de carpeta
+        File directoryToSave = directoryChooser.showDialog(new Stage());
 
-        // Configurar la extensión del archivo (por ejemplo, JSON)
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON Files", "*.json"));
+        // Verificar si se seleccionó una ubicación
+        if (directoryToSave != null) {
+            // Crear la carpeta donde se guardarán los archivos CSV
+            File exportFolder = new File(directoryToSave, "ExportedCSVs");
+            if (!exportFolder.exists()) {
+                exportFolder.mkdir();
+            }
 
-        // Mostrar el diálogo de guardar archivo
-        File fileToSave = fileChooser.showSaveDialog(new Stage());
-
-        // Verificar si se seleccionó una ruta
-        if (fileToSave != null) {
-            // Ruta del archivo que ya tienes en tu proyecto (puedes cambiar esta ruta según sea necesario)
-
+            // Ruta del archivo JSON en tu proyecto
             File archivoExistente = new File("src/main/resources/org/java/fase2final_manejo/backup/backup_data.json");
 
-            // Copiar el archivo existente a la nueva ubicación seleccionada
             try {
-                Files.copy(archivoExistente.toPath(), fileToSave.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                mostrarMensajeConfirmacion("Archivo exportado correctamente.", "El archivo se exportó correctamente.", "El archivo se exporto correctamente a la ruta");
+                ObjectMapper objectMapper = new ObjectMapper();
+                JsonNode rootNode = objectMapper.readTree(archivoExistente);
+
+                // Recorrer cada lista en el JSON y escribirla en archivos CSV individuales
+                for (Iterator<Map.Entry<String, JsonNode>> it = rootNode.fields(); it.hasNext(); ) {
+                    Map.Entry<String, JsonNode> entry = it.next();
+                    String sectionName = entry.getKey(); // Nombre de la sección (lineas, marcas, etc.)
+                    JsonNode arrayNode = entry.getValue();
+
+                    if (arrayNode.isArray() && arrayNode.size() > 0) {
+                        // Crear un archivo CSV para cada sección
+                        File csvFile = new File(exportFolder, sectionName + ".csv");
+                        try (FileWriter csvWriter = new FileWriter(csvFile)) {
+                            // Escribir la fila de encabezado con los nombres de los atributos
+                            JsonNode firstItem = arrayNode.get(0);
+                            if (firstItem != null && firstItem.isObject()) {
+                                Iterator<String> fieldNames = firstItem.fieldNames();
+                                while (fieldNames.hasNext()) {
+                                    String fieldName = fieldNames.next();
+                                    csvWriter.append(fieldName).append(",");
+                                }
+                                csvWriter.append("\n");
+                            }
+
+                            // Escribir cada objeto de la lista como una fila en el CSV
+                            for (JsonNode item : arrayNode) {
+                                Iterator<String> fieldNames = item.fieldNames();
+                                while (fieldNames.hasNext()) {
+                                    String fieldName = fieldNames.next();
+                                    JsonNode value = item.get(fieldName);
+
+                                    // Comprobar si el campo es un objeto anidado que tiene un nombre
+                                    if (value.isObject() && value.has("nombre")) {
+                                        csvWriter.append(value.get("nombre").asText());
+                                    }else if ((value.isObject() && value.has("nombreTipo"))){
+                                        csvWriter.append(value.get("nombreTipo").asText());
+                                    } else if (value.isObject() && value.has("nombreLinea")){
+                                        csvWriter.append(value.get("nombreLinea").asText());
+                                    }else if (value.isTextual()) {
+                                        csvWriter.append(value.asText());
+                                    } else if (value.isInt()) {
+                                        csvWriter.append(String.valueOf(value.asInt()));
+                                    } else if (value.isDouble()) {
+                                        csvWriter.append(String.valueOf(value.asDouble()));
+                                    } else if (value.isArray() && fieldName.equals("fechaCreacion")) {
+                                        // Formato específico para fechas en LocalDate [YYYY, MM, DD]
+                                        String formattedDate = value.get(0).asInt() + "-" + value.get(1).asInt() + "-" + value.get(2).asInt();
+                                        csvWriter.append(formattedDate);
+                                    } else if (value.isArray()) {
+                                        csvWriter.append(value.toString()); // Para otros arrays
+                                    } else {
+                                        csvWriter.append(value.asText()); // Cualquier otro tipo se convierte a texto
+                                    }
+                                    csvWriter.append(",");
+                                }
+                                csvWriter.append("\n");
+                            }
+                        }
+                    }
+                }
+
+                mostrarMensajeConfirmacion("Exportación completada", "Los archivos CSV se exportaron correctamente en la carpeta seleccionada.", "Archivos exportados a la carpeta: " + exportFolder.getAbsolutePath());
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("Error al exportar el archivo.");
+                System.out.println("Error al exportar los archivos CSV.");
             }
         } else {
             System.out.println("No se seleccionó ninguna ubicación para guardar.");
         }
     }
+
+
+
+
 }
