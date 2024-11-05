@@ -71,7 +71,7 @@ public class homeController implements Initializable, MensajesEmergentes {
         // Verificar si se seleccionó una ruta
         if (fileToSave != null) {
             // Ruta del archivo que ya tienes en tu proyecto (puedes cambiar esta ruta según sea necesario)
-            File archivoExistente = new File("src/main/resources/org/java/fx/backup/backup_data.json");
+            File archivoExistente = new File("src/main/resources/org/java/fase2final_manejo/backup/backup_data.json");
 
             // Copiar el archivo existente a la nueva ubicación seleccionada
             try {
