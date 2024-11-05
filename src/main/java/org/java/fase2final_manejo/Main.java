@@ -4,19 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.java.fase2final_manejo.models.Linea;
-import org.java.fase2final_manejo.models.Marca;
-import org.java.fase2final_manejo.models.Tipo;
-import org.java.fase2final_manejo.models.Vehiculo;
-import org.java.fase2final_manejo.repositories.LineaRepository;
-import org.java.fase2final_manejo.repositories.MarcaRepository;
-import org.java.fase2final_manejo.repositories.TipoRepository;
-import org.java.fase2final_manejo.repositories.VehiculoRepository;
-import org.java.fase2final_manejo.services.LineaService;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.List;
 
 public class Main extends Application {
 

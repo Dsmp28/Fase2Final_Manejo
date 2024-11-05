@@ -1,2 +1,1 @@
-Sedan,0,60
-Truck,60,60
+0,Sedan,0,60

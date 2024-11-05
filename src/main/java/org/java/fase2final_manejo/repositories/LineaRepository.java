@@ -17,6 +17,7 @@ public class LineaRepository extends GenericRepository<Linea> {
     public List<Linea> findByNombreLineaContainingIgnoreCase(String nombreLinea) {
         return null;
     }
+
 }
 
 
