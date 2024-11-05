@@ -154,16 +154,16 @@ public class vehicleCell extends ListCell<Vehiculo> implements MensajesEmergente
         eliminar.setPrefSize(24, 24);
         eliminar.setCursor(javafx.scene.Cursor.HAND);
 
-//        eliminar.setOnAction(event -> {
-//            BackupService backupService = Main.context.getBean(BackupService.class);
-//            Vehiculo item = getItem();
-//            if (item != null && mostrarMensajeConfirmacion("Eliminar vehiculo", "¿Estás seguro de eliminar el vehiculo de placa: " + item.getPlaca() + "?", "Esta acción no se puede deshacer")) {
-//                items.remove(item);
-//                vehiculoService.eliminarVehiculo(item.getId());
-//                backupService.generateBackupInBackground();
-//                mostrarMensajeExito();
-//            }
-//        });
+        eliminar.setOnAction(event -> {
+            //BackupService backupService = Main.context.getBean(BackupService.class);
+            Vehiculo item = getItem();
+            if (item != null && mostrarMensajeConfirmacion("Eliminar vehiculo", "¿Estás seguro de eliminar el vehiculo de placa: " + item.getPlaca() + "?", "Esta acción no se puede deshacer")) {
+                items.remove(item);
+                vehiculoService.eliminarVehiculo(item.getId());
+                //backupService.generateBackupInBackground();
+                mostrarMensajeExito();
+            }
+        });
 
 
         HBox hBox = new HBox(editar, eliminar);
