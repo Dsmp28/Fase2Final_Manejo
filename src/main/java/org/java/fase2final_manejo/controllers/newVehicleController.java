@@ -66,30 +66,44 @@ public class newVehicleController implements Initializable, MensajesEmergentes {
     }
 
     @FXML
-    private void agregarNuevo(){
+    private void agregarNuevo() {
         try {
-            String modelo = txtModelo.getText();
-            String color = txtColor.getText();
-            String placa = txtPlaca.getText();
-            String chasis = txtChasis.getText();
-            String motor = txtMotor.getText();
-            String vin = txtVin.getText();
-            Integer numAsientos = Integer.parseInt(txtNumAsientos.getText());
+            String modelo = txtModelo.getText().trim();
+            String color = txtColor.getText().trim();
+            String placa = txtPlaca.getText().trim();
+            String chasis = txtChasis.getText().trim();
+            String motor = txtMotor.getText().trim();
+            String vin = txtVin.getText().trim();
+            Integer numAsientos = Integer.parseInt(txtNumAsientos.getText().trim());
             Marca marca = cbMarca.getValue();
             Tipo tipo = cbTipo.getValue();
             Linea linea = cbLinea.getValue();
-            if (modelo.isEmpty() || color.isEmpty() || placa.isEmpty() || chasis.isEmpty() || motor.isEmpty() || vin.isEmpty() || marca == null || tipo == null || linea == null){
+
+            // Validar campos obligatorios
+            if (modelo.isEmpty() || color.isEmpty() || placa.isEmpty() || chasis.isEmpty() || motor.isEmpty() || vin.isEmpty() || marca == null || tipo == null || linea == null) {
                 throw new Exception("Todos los campos son obligatorios");
             }
+
+            // Verificar si ya existe un vehículo con la misma placa
+            List<Vehiculo> vehiculosExistentes = vehiculoService.buscarVehiculoPorPlaca(placa);
+            if (!vehiculosExistentes.isEmpty()) {
+                mostrarMensajeError("Ya existe un vehículo con la placa ingresada.");
+                return;
+            }
+
+            // Crear y guardar el nuevo vehículo
             Vehiculo vehiculo = new Vehiculo(marca, modelo, color, placa, chasis, motor, vin, numAsientos, tipo, linea);
             vehiculoService.guardarVehiculo(vehiculo);
 //            backupService.generateBackupInBackground();
+
+            // Mostrar mensaje de éxito y cerrar
             mostrarMensajeExito();
             cerrar();
-        } catch (Exception e){
+        } catch (Exception e) {
             mostrarMensajeError(e.getMessage());
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

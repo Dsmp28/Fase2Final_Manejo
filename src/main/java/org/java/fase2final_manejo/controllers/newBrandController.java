@@ -14,6 +14,7 @@ import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.MarcaService;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class newBrandController implements Initializable, MensajesEmergentes {
@@ -38,16 +39,25 @@ public class newBrandController implements Initializable, MensajesEmergentes {
     }
 
     @FXML
-    private void agregarNuevo(){
+    private void agregarNuevo() {
         try {
-            String nombreMarca = txtMarca.getText();
+            String nombreMarca = txtMarca.getText().trim();
             String fundador = txtFundador.getText();
             LocalDate fecha = dpFecha.getValue();
-            if (nombreMarca.isEmpty() || fundador.isEmpty() || fecha == null){
+
+            if (nombreMarca.isEmpty() || fundador.isEmpty() || fecha == null) {
                 throw new Exception("Todos los campos son obligatorios");
             }
-            Marca marca = new Marca(nombreMarca, fecha, fundador);
-            marcaService.guardarMarca(marca);
+
+            // Verificar si ya existe una marca con el mismo nombre
+            List<Marca> marcasExistentes = marcaService.buscarMarcaPorNombre(nombreMarca);
+            if (!marcasExistentes.isEmpty()) {
+                mostrarMensajeError("Ya existe una marca con el nombre ingresado.");
+                return;
+            }
+
+            Marca nuevaMarca = new Marca(nombreMarca, fecha, fundador);
+            marcaService.guardarMarca(nuevaMarca);
             //backupService.generateBackup();
             mostrarMensajeExito();
             cerrar();
@@ -55,6 +65,7 @@ public class newBrandController implements Initializable, MensajesEmergentes {
             mostrarMensajeError(e.getMessage());
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
