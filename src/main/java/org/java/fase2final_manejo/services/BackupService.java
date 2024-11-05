@@ -27,7 +27,7 @@ public class BackupService {
 
     private TipoService tipoService;
 
-    private final File backupFile = new File("src/main/resources/org/java/fx/backup/backup_data.json");
+    private final File backupFile = new File("src/main/resources/org/java/fase2final_manejo/backup/backup_data.json");
     private final ObjectMapper objectMapper;
 
     public BackupService() {

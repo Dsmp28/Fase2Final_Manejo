@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import org.java.fase2final_manejo.models.Tipo;
+import org.java.fase2final_manejo.repositories.TipoRepository;
 import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.TipoService;
 
@@ -42,6 +43,9 @@ public class editTypeController implements Initializable, MensajesEmergentes {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        backupService = Main.context.getBean(BackupService.class);
+        String dataTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json";
+        String indexTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt";
+        tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
     }
     @FXML
     private void editarTipo(){
