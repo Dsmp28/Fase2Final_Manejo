@@ -10,6 +10,8 @@ import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.controllers.MensajesEmergentes;
 import org.java.fase2final_manejo.models.Linea;
 import org.java.fase2final_manejo.models.Marca;
+import org.java.fase2final_manejo.repositories.LineaRepository;
+import org.java.fase2final_manejo.repositories.MarcaRepository;
 import org.java.fase2final_manejo.services.BackupService;
 import org.java.fase2final_manejo.services.LineaService;
 import org.java.fase2final_manejo.services.MarcaService;
@@ -46,6 +48,12 @@ public class editLineController implements Initializable, MensajesEmergentes {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //backupService = Main.context.getBean(BackupService.class);
+        String dataMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataMarca.json";
+        String indexMarcaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexMarca.txt";
+        marcaService = new MarcaService(new MarcaRepository(dataMarcaPath, indexMarcaPath));
+        String dataLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/dataLinea.json";
+        String indexLineaPath = "src/main/resources/org/java/fase2final_manejo/Data/indexLinea.txt";
+        lineaService = new LineaService(new LineaRepository(dataLineaPath, indexLineaPath));
     }
     public void setLinea(Linea linea){
         this.linea = linea;

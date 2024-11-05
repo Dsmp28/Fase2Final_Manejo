@@ -7,8 +7,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.java.fase2final_manejo.Main;
 import org.java.fase2final_manejo.models.Tipo;
-import org.java.fase2final_manejo.services.BackupService;
-import org.java.fase2final_manejo.services.TipoService;
+import org.java.fase2final_manejo.repositories.LineaRepository;
+import org.java.fase2final_manejo.repositories.MarcaRepository;
+import org.java.fase2final_manejo.repositories.TipoRepository;
+import org.java.fase2final_manejo.repositories.VehiculoRepository;
+import org.java.fase2final_manejo.services.*;
 
 
 import java.net.URL;
@@ -57,6 +60,10 @@ public class newTypeController implements Initializable, MensajesEmergentes {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //        backupService = Main.context.getBean(BackupService.class);
+        String dataTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/dataTipo.json";
+        String indexTipoPath = "src/main/resources/org/java/fase2final_manejo/Data/indexTipo.txt";
+
+        tipoService = new TipoService(new TipoRepository(dataTipoPath, indexTipoPath));
     }
 
     private void mostrarMensajeError(String mensaje){

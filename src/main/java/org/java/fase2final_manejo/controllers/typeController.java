@@ -51,7 +51,7 @@ public class typeController implements Initializable {
     @FXML
     public void abrirVentanaNuevoTipo(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/newTypeView.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/newTypeView.fxml"));
 //            loader.setControllerFactory(Main.context::getBean);
             Parent root = loader.load();
 

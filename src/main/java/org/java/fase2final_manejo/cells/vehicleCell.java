@@ -123,7 +123,7 @@ public class vehicleCell extends ListCell<Vehiculo> implements MensajesEmergente
         imageEditar = new ImageView();
         imageEditar.setFitHeight(16);
         imageEditar.setFitWidth(16);
-        imageEditar.setImage(new Image(new File("src/main/resources/org/java/fx/images/editar.png").toURI().toString()));
+        imageEditar.setImage(new Image(new File("src/main/resources/org/java/fase2final_manejo/images/editar.png").toURI().toString()));
         editar = new Button("", imageEditar);
         editar.setStyle("-fx-background-color: #8cc1a1");
         editar.setPrefSize(24, 24);
@@ -133,7 +133,7 @@ public class vehicleCell extends ListCell<Vehiculo> implements MensajesEmergente
             Vehiculo vehiculo = getItem();
             if(vehiculo != null){
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fx/visuals/edits/editVehicleView.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/java/fase2final_manejo/visuals/edits/editVehicleView.fxml"));
 //                    loader.setControllerFactory(Main.context::getBean);
                     Parent root = loader.load();
                     editVehicleController controller = loader.getController();
@@ -155,7 +155,7 @@ public class vehicleCell extends ListCell<Vehiculo> implements MensajesEmergente
         imageEliminar = new ImageView();
         imageEliminar.setFitHeight(16);
         imageEliminar.setFitWidth(16);
-        imageEliminar.setImage(new Image(new File("src/main/resources/org/java/fx/images/basura.png").toURI().toString()));
+        imageEliminar.setImage(new Image(new File("src/main/resources/org/java/fase2final_manejo/images/basura.png").toURI().toString()));
         eliminar = new Button("", imageEliminar);
         eliminar.setStyle("-fx-background-color: red");
         eliminar.setPrefSize(24, 24);
