@@ -1,11 +1,41 @@
 [ {
-  "id" : 0,
+  "id" : 1,
   "marca" : {
-    "id" : 0,
-    "nombre" : "Prueba 1",
-    "fechaCreacion" : [ 2024, 11, 12 ],
-    "fundador" : "12"
+    "id" : 1,
+    "nombre" : "Honda",
+    "fechaCreacion" : [ 2024, 11, 5 ],
+    "fundador" : "Fuyimoto"
   },
-  "nombreLinea" : "Linea 1",
-  "ano" : 3
+  "nombreLinea" : "Hrv",
+  "ano" : 1993
+}, {
+  "id" : 2,
+  "marca" : {
+    "id" : 4,
+    "nombre" : "GMC",
+    "fechaCreacion" : [ 1900, 11, 16 ],
+    "fundador" : "John"
+  },
+  "nombreLinea" : "Sierra",
+  "ano" : 1200
+}, {
+  "id" : 3,
+  "marca" : {
+    "id" : 2,
+    "nombre" : "Chevrolet",
+    "fechaCreacion" : [ 2024, 11, 12 ],
+    "fundador" : "Smith"
+  },
+  "nombreLinea" : "Captiva",
+  "ano" : 1567
+}, {
+  "id" : 4,
+  "marca" : {
+    "id" : 3,
+    "nombre" : "Toyota",
+    "fechaCreacion" : [ 2024, 11, 12 ],
+    "fundador" : "Kayamaru"
+  },
+  "nombreLinea" : "Yaris",
+  "ano" : 1456
 } ]

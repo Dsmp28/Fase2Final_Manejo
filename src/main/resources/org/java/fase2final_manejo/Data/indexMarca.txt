@@ -1,1 +1,4 @@
-Prueba 1, 2, 99
+Chevrolet, 109, 109
+GMC, 327, 101
+Honda, 2, 107
+Toyota, 218, 109
