@@ -438,7 +438,5 @@ public class GenericRepository<T> {
             throw new RuntimeException("Error al obtener el nombre del objeto", e);
         }
     }
-
-
 }
 

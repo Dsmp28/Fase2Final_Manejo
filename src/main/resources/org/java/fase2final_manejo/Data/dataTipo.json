@@ -1,5 +1,9 @@
 [ {
-  "id" : 0,
-  "nombreTipo" : "Tipo 1",
-  "ano" : 1
+  "id" : 1,
+  "nombreTipo" : "Sedan",
+  "ano" : 12
+}, {
+  "id" : 2,
+  "nombreTipo" : "SUV",
+  "ano" : 12
 } ]

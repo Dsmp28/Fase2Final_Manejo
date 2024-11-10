@@ -1,1 +1,4 @@
-Linea 1, 2, 179
+Captiva, 382, 197
+Hrv, 2, 191
+Sierra, 193, 189
+Yaris, 579, 194
