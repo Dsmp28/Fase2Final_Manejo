@@ -70,5 +70,160 @@
     "nombreTipo" : "SUV",
     "ano" : 12
   } ],
-  "vehiculos" : [ ]
+  "vehiculos" : [ {
+    "id" : 0,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Honda",
+      "fechaCreacion" : [ 2024, 11, 5 ],
+      "fundador" : "Fuyimoto"
+    },
+    "modelo" : "asasd",
+    "color" : "asdf",
+    "placa" : "sadfasdf",
+    "chasis" : "sdaf",
+    "motor" : "asdfasdf",
+    "vin" : "VIN123",
+    "asientos" : 3,
+    "tipo" : {
+      "id" : 2,
+      "nombreTipo" : "SUV",
+      "ano" : 12
+    },
+    "linea" : {
+      "id" : 1,
+      "marca" : {
+        "id" : 1,
+        "nombre" : "Honda",
+        "fechaCreacion" : [ 2024, 11, 5 ],
+        "fundador" : "Fuyimoto"
+      },
+      "nombreLinea" : "Hrv",
+      "ano" : 1993
+    }
+  }, {
+    "id" : 1,
+    "marca" : {
+      "id" : 2,
+      "nombre" : "Chevrolet",
+      "fechaCreacion" : [ 2024, 11, 12 ],
+      "fundador" : "Smith"
+    },
+    "modelo" : "DSAGF",
+    "color" : "ASDFA",
+    "placa" : "SF",
+    "chasis" : "ASDFSAD",
+    "motor" : "FASDF",
+    "vin" : "VIN455",
+    "asientos" : 3,
+    "tipo" : {
+      "id" : 1,
+      "nombreTipo" : "Sedan",
+      "ano" : 12
+    },
+    "linea" : {
+      "id" : 3,
+      "marca" : {
+        "id" : 2,
+        "nombre" : "Chevrolet",
+        "fechaCreacion" : [ 2024, 11, 12 ],
+        "fundador" : "Smith"
+      },
+      "nombreLinea" : "Captiva",
+      "ano" : 1567
+    }
+  }, {
+    "id" : 2,
+    "marca" : {
+      "id" : 3,
+      "nombre" : "Toyota",
+      "fechaCreacion" : [ 2024, 11, 12 ],
+      "fundador" : "Kayamaru"
+    },
+    "modelo" : "ASDSA",
+    "color" : "ASD",
+    "placa" : "SAD",
+    "chasis" : "ASD",
+    "motor" : "ASDASD",
+    "vin" : "VIN255",
+    "asientos" : 3,
+    "tipo" : {
+      "id" : 1,
+      "nombreTipo" : "Sedan",
+      "ano" : 12
+    },
+    "linea" : {
+      "id" : 4,
+      "marca" : {
+        "id" : 3,
+        "nombre" : "Toyota",
+        "fechaCreacion" : [ 2024, 11, 12 ],
+        "fundador" : "Kayamaru"
+      },
+      "nombreLinea" : "Yaris",
+      "ano" : 1456
+    }
+  }, {
+    "id" : 3,
+    "marca" : {
+      "id" : 2,
+      "nombre" : "Chevrolet",
+      "fechaCreacion" : [ 2024, 11, 12 ],
+      "fundador" : "Smith"
+    },
+    "modelo" : "CDXVSD",
+    "color" : "VCX",
+    "placa" : "VS",
+    "chasis" : "VSCXVS",
+    "motor" : "VCXSV",
+    "vin" : "VIN0055",
+    "asientos" : 5,
+    "tipo" : {
+      "id" : 2,
+      "nombreTipo" : "SUV",
+      "ano" : 12
+    },
+    "linea" : {
+      "id" : 3,
+      "marca" : {
+        "id" : 2,
+        "nombre" : "Chevrolet",
+        "fechaCreacion" : [ 2024, 11, 12 ],
+        "fundador" : "Smith"
+      },
+      "nombreLinea" : "Captiva",
+      "ano" : 1567
+    }
+  }, {
+    "id" : 4,
+    "marca" : {
+      "id" : 1,
+      "nombre" : "Honda",
+      "fechaCreacion" : [ 2024, 11, 5 ],
+      "fundador" : "Fuyimoto"
+    },
+    "modelo" : "AZXC",
+    "color" : "XZCZXC",
+    "placa" : "ZXC",
+    "chasis" : "ZXC",
+    "motor" : "ZXCZXCZ",
+    "vin" : "VIN900",
+    "asientos" : 3,
+    "tipo" : {
+      "id" : 1,
+      "nombreTipo" : "Sedan",
+      "ano" : 12
+    },
+    "linea" : {
+      "id" : 1,
+      "marca" : {
+        "id" : 1,
+        "nombre" : "Honda",
+        "fechaCreacion" : [ 2024, 11, 5 ],
+        "fundador" : "Fuyimoto"
+      },
+      "nombreLinea" : "Hrv",
+      "ano" : 1993
+    }
+  } ]
 }

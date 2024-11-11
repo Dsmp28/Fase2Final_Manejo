@@ -13,12 +13,20 @@ public class IndexEntry {
         this.nextByteOffset = nextByteOffset;
     }
 
+    public String getVin() {
+        return vin;
+    }
+
     public int getStart() {
         return start;
     }
 
     public int getLength() {
         return length;
+    }
+
+    public int getNextByteOffset() {
+        return nextByteOffset;
     }
 
     public void setNextByteOffset(int nextByteOffset) {
